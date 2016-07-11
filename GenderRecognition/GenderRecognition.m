@@ -1,7 +1,7 @@
 close all
 clear all
 
-[s, fs] = audioread('Debora.wav');
+[s, fs] = audioread('EmaProva4.wav');
 
 % [Rg,lags] = xcorr(s);
 % plot(lags,Rg);
@@ -15,8 +15,7 @@ L=round(l*fs);
 %numero campioni overlappati in ogni frame
 M=round(0.9*L);
 
-% %ema: creo matrice K in cui ogni riga è un frame, composto da L campioni,
-% %di cui M overlappati
+% %ema: creo matrice K in cui ogni riga è un frame, composto da L campioni
 % K=zeros(F,L);
 % n=1;
 % for i = 1:F
@@ -41,9 +40,12 @@ end
 %finestra di hamming di L punti
 w = hamming(L)';
 
-%finestriamo ogni frame
-for i = 1:F
-    K(i,1:end)=K(i,1:end).*w;
+%finestriamo ogni frame 
+finestra=1;
+if finestra==1
+    for i = 1:F
+        K(i,1:end)=K(i,1:end).*w;
+    end
 end
 
 %calcoliamo pitch di ogni frame
@@ -66,7 +68,10 @@ for i = 1:F
     %+t1 perchè si fa riferimento all'indice del nuovo array
     pitch(i)=fs/(t_pitch(i)+t1);                
 end
-%plot(lags(900,1:end),Rg(900,1:end));
+
+%plottiamo pitch di ogni frame
+figure(3)
+plot(pitch);
 
 %stabiliamo numero frame per blocco
 D=20;
