@@ -1,6 +1,7 @@
-%[s, fs] = audioread('BimbaPochiMesiBPF.wav');
-[s, fs] = audioread('EmaProva3.wav');
-%[s, fs] = audioread('Bosi12sLPF.wav');
+close all
+clear all
+
+[s, fs] = audioread('Debora.wav');
 
 % [Rg,lags] = xcorr(s);
 % plot(lags,Rg);
@@ -8,15 +9,42 @@
 %campioni totali sequenza s(n)
 N=length(s);
 %lunghezza temporale del frame(20-40,0.25)
-l=0.1;
-%numero campioni per frame
-L=l*fs;
-%numero di frame totali
-F=floor(N/L);
-%accorcio sequenza s(n)
-s=s(1:F*L);
-%frammentazione sequenza s(n) in F frame
-K=reshape(s, [F, L]);
+l=0.25;
+%numero campioni per frame-----EMA AGGIUNTO round
+L=round(l*fs);
+%numero campioni overlappati in ogni frame
+M=round(0.9*L);
+
+% %ema: creo matrice K in cui ogni riga è un frame, composto da L campioni,
+% %di cui M overlappati
+% K=zeros(F,L);
+% n=1;
+% for i = 1:F
+%     for j = 1:L
+%         K(i,j)=s(n);
+%         n=n+1;
+%     end 
+% end
+
+%L campioni per frame, M campioni overlappati
+%troviamo numero totale frame
+F=floor((N-M)/(L-M));
+
+%creiamo i frame overlappati: K matrice in cui ogni riga è un frame 
+%(contiene L pitch, tra cui quelli overlappati)
+K=zeros(F,L);
+for i=1:F
+    indice=((L-M)*(i-1)+1);
+    K(i,1:end)=s(indice:indice+L-1);
+end
+
+%finestra di hamming di L punti
+w = hamming(L)';
+
+%finestriamo ogni frame
+for i = 1:F
+    K(i,1:end)=K(i,1:end).*w;
+end
 
 %calcoliamo pitch di ogni frame
 %troviamo limiti dell'autocorrelazione
