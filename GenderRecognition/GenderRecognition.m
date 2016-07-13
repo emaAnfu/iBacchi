@@ -1,19 +1,16 @@
 close all
 clear all
 
-[s, fs] = audioread('EmaProva1.wav');
-
-% [Rg,lags] = xcorr(s);
-% plot(lags,Rg);
+[s, fs] = audioread('Bosi12s.wav');
 
 %campioni totali sequenza s(n)
 N=length(s);
 %lunghezza temporale del frame(20-40,0.25)
 l=0.25;
-%numero campioni per frame-----EMA AGGIUNTO round
+%numero campioni per frame
 L=round(l*fs);
 %numero campioni overlappati in ogni frame
-M=round(0.9*L);
+M=round(0.8*L);
 
 %L campioni per frame, M campioni overlappati
 %troviamo numero totale frame
@@ -30,24 +27,23 @@ end
 %finestra di hamming di L punti
 w = hamming(L)';
 
-%finestriamo ogni frame 
-finestra=0;
-if finestra==1
+%finestriamo ogni frame  (se flagFinestra=1)
+flagFinestra=1;
+if flagFinestra==1
     for i = 1:F
         K(i,1:end)=K(i,1:end).*w;
     end
 end
 
-%calcolo energia totale segnale
+%calcolo energia media del segnale
 E=0;
 for i = 1:N
     E=E+s(i)^2;
 end
-%energia media
 E=E/N;
 
 %mantengo solo frame con energia maggiore a quella media del segnale
-sogliaEnergetica=0;
+sogliaEnergetica=1;
 Ef=0;
 m=1;
 K_nuova=zeros(1,L);
@@ -67,7 +63,8 @@ else
     K_nuova=K;
 end
 
-%abbiamo così ridotto il numero di frame
+%abbiamo così ridotto il numero di frame: il numero di righe di K_nuova
+%sarà il numero totale dei frame rimasti
 F_vecchio=F;
 F=size(K_nuova,1);
 
@@ -92,16 +89,17 @@ for i = 1:F
     pitch(i)=fs/(t_pitch(i)+t1);                
 end
 
-%plottiamo pitch di ogni frame
-figure(2)
-plot(pitch);
+%per plottare pitch di ogni frame mettere flag a 1
+flagStampaPitch=0;
+if flagStampaPitch==1
+    figure(2)
+    plot(pitch);
+end
 
 %stabiliamo numero frame per blocco
-D=20;
-
+D=F;
 %stabiliamo numero frame overlappati
-V=10;
-
+V=0;
 %troviamo numero totale blocchi
 B=floor((F-V)/(D-V));
 
@@ -113,37 +111,28 @@ for i=1:B
     blocks(i,1:end)=pitch(indice:indice+D-1);
 end
 
-%definiamo larghezza di ogni sotto-intervallo (bin) (Hz)
+%definiamo larghezza di ogni sotto-intervallo (bin) (ordinati secondo gli Hz))
 delta_p=10;
 
-%numero bin
+%numero bin 
 H=floor((P2-P1)/delta_p);
 
 %matrice le cui righe sono le PDF di ciascun blocco, ognuna delle quali
 %è divisa in H bin
 PDF=zeros(B, H);
 
-%SOLUZIONE 1
-%pesiamo ogni bin secondo "histogram count" ricavando così la PDF
-% bin_bias=floor(P1/delta_p);
-% for i=1:B
-%     for j=1:D
-%         num_bin=floor(blocks(i,j)/delta_p)-bin_bias+1;
-%         PDF(i,num_bin)=PDF(i,num_bin)+1;
-%     end
-% end
-% %normalizziamo la PDF
-% PDF=PDF/D;
-
-%SOLUZIONE 2 (+ ACCURATA)
-%troviamo i pesi con considerazioni energetiche
+%troviamo i pesi di ciascun bin con considerazioni energetiche
 %troviamo FFT della sequenza originale
 NFFT=N;
 f = linspace(-fs/2,fs/2,NFFT);
 S=fft(s,NFFT);
-figure(3)
-plot(f,abs(fftshift(S)));
-%troviamo energia associata a ciascun pitch e la assegnamo ai bin
+%mettere a 1 il flag per stampare lo spettro del segnale
+flagStampa=0;
+if flagStampa==1
+    figure(3)
+    plot(f,abs(fftshift(S)));
+end
+%troviamo energia associata a ciascun pitch e la assegniamo ai bin
 bin_bias=floor(P1/delta_p);
 %variabile per tenere conto dell'energia totale dei pitch
 total_pitch_energy=0;
@@ -167,17 +156,6 @@ end
 %normalizziamo la PDF dividendo per energia totale dei pitch
 PDF=PDF/total_pitch_energy;
 
-%estraggo valor medio della PDF di ciascun blocco
-% PDF_mean=zeros(1,B);
-% for i=1:B
-%     for j=1:H
-%         PDF_mean(i)=PDF_mean(i)+((j+1/2+bin_bias)*delta_p)*PDF(i,j);
-%     end
-% end
-
-%plot valor medi delle PDF
-% plot (PDF_mean);
-
 %creiamo asse frequenze
 freq=(P1+delta_p/2):delta_p:(P2-delta_p/2);
 
@@ -188,6 +166,21 @@ for i=1:B
     hold on
 end
 
+%estraggo valor medio della PDF di ciascun blocco
+PDF_mean=zeros(1,B);
+for i=1:B
+    for j=1:H
+        PDF_mean(i)=PDF_mean(i)+((j+1/2+bin_bias)*delta_p)*PDF(i,j);
+    end
+end
+
+%estraggo l'argomento del massimo della PDF di ciascun blocco: questo
+%corrisponde alla frequenza di pitch corrispondente a tale blocco
+PDF_argmax=zeros(1,B);
+for i=1:B
+    [val, arg]=max(PDF(i,1:end));
+    PDF_argmax(i)=freq(arg)
+end
 
 
 
