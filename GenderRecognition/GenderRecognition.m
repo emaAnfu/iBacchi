@@ -1,7 +1,7 @@
 close all
 clear all
 
-[s, fs] = audioread('EmaProva4.wav');
+[s, fs] = audioread('EmaProva1.wav');
 
 % [Rg,lags] = xcorr(s);
 % plot(lags,Rg);
@@ -14,16 +14,6 @@ l=0.25;
 L=round(l*fs);
 %numero campioni overlappati in ogni frame
 M=round(0.9*L);
-
-% %ema: creo matrice K in cui ogni riga è un frame, composto da L campioni
-% K=zeros(F,L);
-% n=1;
-% for i = 1:F
-%     for j = 1:L
-%         K(i,j)=s(n);
-%         n=n+1;
-%     end 
-% end
 
 %L campioni per frame, M campioni overlappati
 %troviamo numero totale frame
@@ -41,12 +31,45 @@ end
 w = hamming(L)';
 
 %finestriamo ogni frame 
-finestra=1;
+finestra=0;
 if finestra==1
     for i = 1:F
         K(i,1:end)=K(i,1:end).*w;
     end
 end
+
+%calcolo energia totale segnale
+E=0;
+for i = 1:N
+    E=E+s(i)^2;
+end
+%energia media
+E=E/N;
+
+%mantengo solo frame con energia maggiore a quella media del segnale
+sogliaEnergetica=0;
+Ef=0;
+m=1;
+K_nuova=zeros(1,L);
+K_nuova(1,1:end)=K(1,1:end);
+if (sogliaEnergetica==1)
+    for i = 2:F
+        for j = 1:L
+            Ef=Ef+K(i,j)^2;
+        end
+        Ef=Ef/L;
+        if Ef>=E
+            K_nuova=[K_nuova; K(i,1:end)];
+            m=m+1;
+        end
+    end
+else
+    K_nuova=K;
+end
+
+%abbiamo così ridotto il numero di frame
+F_vecchio=F;
+F=size(K_nuova,1);
 
 %calcoliamo pitch di ogni frame
 %troviamo limiti dell'autocorrelazione
@@ -61,7 +84,7 @@ t_pitch=zeros(1,F);
 pitch=zeros(1,F);
 R=(t2-t1)+1;
 for i = 1:F
-    [Rg_temp,lags_temp] = xcorr(K(i,1:end), t2-1);
+    [Rg_temp,lags_temp] = xcorr(K_nuova(i,1:end), t2-1);
     Rg_temp=Rg_temp((end+1)/2+t1:end);          %end+1 perché dispari
     lags_temp=lags_temp((end+1)/2+t1:end);
     [Y,t_pitch(i)]=max(Rg_temp);
