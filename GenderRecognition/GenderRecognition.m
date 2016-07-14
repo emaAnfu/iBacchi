@@ -8,7 +8,7 @@ clear all
 % flagPlot = Se TRUE grafico
 
 %input
-fileName='ZioDavide.wav';
+fileName='EmaProvaFinale.wav';
 flagSogliaEnergia=true;
 flagFinestra=true;
 flagPlot=true;
@@ -166,20 +166,12 @@ PDF=PDF/total_pitch_energy;
 %creiamo asse frequenze
 freq=(P1+delta_p/2):delta_p:(P2-delta_p/2);
 
-%plot PDF di ogni blocco
-figure(1)
-for i=1:B
-    plot(freq,PDF(i,1:end));
-    hold on
-end
-
 %estraggo valor medio della PDF di ciascun blocco
 PDF_mean=zeros(1,B);
 for i=1:B
     for j=1:H
         PDF_mean(i)=PDF_mean(i)+((j+1/2+bin_bias)*delta_p)*PDF(i,j);
     end
-    PDF_mean(i)=PDF_mean(i)
 end
 
 %estraggo l'argomento del massimo della PDF di ciascun blocco: questo
@@ -187,7 +179,7 @@ end
 PDF_argmax=zeros(1,B);
 for i=1:B
     [val, arg]=max(PDF(i,1:end));
-    PDF_argmax(i)=freq(arg)
+    PDF_argmax(i)=freq(arg);
 end
 
 %in PITCH metto i valori dei pitch stimati per ogni blocco, basandomi 
@@ -216,14 +208,28 @@ if flagPlot
     plot(d2_PITCH); title('Derivata Seconda Pitch');
 end
 
-%estraggo varianza della PDF di ciascun blocco
+%estraggo deviazione standard della PDF di ciascun blocco
 PDF_variance=zeros(1,B);
+PDF_std=zeros(1,B);
 for i=1:B
     for j=1:H
         PDF_variance(i)=PDF_variance(i)+...
             ((((j+1/2+bin_bias)*delta_p)-PDF_mean(i))^2)*PDF(i,j);
     end
-    PDF_variance(i)=sqrt(PDF_variance(i))
+    PDF_std(i)=sqrt(PDF_variance(i));
+end
+
+%calcolo valori medi di moda, media e varianza
+pitch_mean=mean(PDF_mean)
+pitch_argmax=mean(PDF_argmax)
+pitch_std=mean(PDF_std)
+
+%plot PDF di ogni blocco
+figure(1)
+for i=1:B
+    plot(freq,PDF(i,1:end));title({'fileName'...
+        , 'Moda=' pitch_argmax, 'Media=' pitch_mean, 'std=' pitch_std});
+    hold on
 end
 
 %end
