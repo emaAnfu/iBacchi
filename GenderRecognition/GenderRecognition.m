@@ -1,12 +1,29 @@
 close all
 clear all
 
-[s, fs] = audioread('Bosi12s.wav');
+% fileName = nome file
+% flagSogliaEnergia = flag soglia energetica. Se TRUE ed energia frame < soglia -->
+% scarto frame
+% flagFinestra = Se TRUE finestro con Hamming
+% flagPlot = Se TRUE grafico
+
+%input
+fileName='ZioDavide.wav';
+flagSogliaEnergia=true;
+flagFinestra=true;
+flagPlot=true;
+
+%da qui se si vuole si può rendere come funzione
+
+%function genderRecognition(fileName, flagSogliaEnergia,...
+%    flagFinestra, flagPlot)
+
+[s, fs] = audioread(fileName);
 
 %campioni totali sequenza s(n)
 N=length(s);
-%lunghezza temporale del frame(20-40,0.25)
-l=0.25;
+%lunghezza temporale del frame(20-40,0.025)
+l=25*10^-3;
 %numero campioni per frame
 L=round(l*fs);
 %numero campioni overlappati in ogni frame
@@ -28,8 +45,7 @@ end
 w = hamming(L)';
 
 %finestriamo ogni frame  (se flagFinestra=1)
-flagFinestra=1;
-if flagFinestra==1
+if flagFinestra
     for i = 1:F
         K(i,1:end)=K(i,1:end).*w;
     end
@@ -41,14 +57,13 @@ for i = 1:N
     E=E+s(i)^2;
 end
 E=E/N;
+E=1*E;
 
 %mantengo solo frame con energia maggiore a quella media del segnale
-sogliaEnergetica=1;
 Ef=0;
-m=1;
 K_nuova=zeros(1,L);
 K_nuova(1,1:end)=K(1,1:end);
-if (sogliaEnergetica==1)
+if (flagSogliaEnergia)
     for i = 2:F
         for j = 1:L
             Ef=Ef+K(i,j)^2;
@@ -56,7 +71,6 @@ if (sogliaEnergetica==1)
         Ef=Ef/L;
         if Ef>=E
             K_nuova=[K_nuova; K(i,1:end)];
-            m=m+1;
         end
     end
 else
@@ -89,17 +103,10 @@ for i = 1:F
     pitch(i)=fs/(t_pitch(i)+t1);                
 end
 
-%per plottare pitch di ogni frame mettere flag a 1
-flagStampaPitch=0;
-if flagStampaPitch==1
-    figure(2)
-    plot(pitch);
-end
-
 %stabiliamo numero frame per blocco
-D=F;
+D=40;
 %stabiliamo numero frame overlappati
-V=0;
+V=20;
 %troviamo numero totale blocchi
 B=floor((F-V)/(D-V));
 
@@ -172,6 +179,7 @@ for i=1:B
     for j=1:H
         PDF_mean(i)=PDF_mean(i)+((j+1/2+bin_bias)*delta_p)*PDF(i,j);
     end
+    PDF_mean(i)=PDF_mean(i)
 end
 
 %estraggo l'argomento del massimo della PDF di ciascun blocco: questo
@@ -182,28 +190,41 @@ for i=1:B
     PDF_argmax(i)=freq(arg)
 end
 
+%in PITCH metto i valori dei pitch stimati per ogni blocco, basandomi 
+%sulla MODA
+PITCH=PDF_argmax;
 
+%troviamo derivata prima del pitch stimato
+d_PITCH=zeros(1,B-1);
+for i=2:B
+    d_PITCH(i)=PITCH(i)-PITCH(i-1);
+end
 
+%troviamo derivata seconda pitch stimato
+d2_PITCH=zeros(1,B-2);
+for i=2:B-1
+    d2_PITCH(i)=d_PITCH(i)-d_PITCH(i-1);
+end
 
+if flagPlot
+    figure(2);
+    subplot(3,1,1);
+    plot(PITCH); title({'Pitch'});
+    subplot(3,1,2);
+    plot(d_PITCH); title('Derivata Prima Pitch');
+    subplot(3,1,3);
+    plot(d2_PITCH); title('Derivata Seconda Pitch');
+end
 
+%estraggo varianza della PDF di ciascun blocco
+PDF_variance=zeros(1,B);
+for i=1:B
+    for j=1:H
+        PDF_variance(i)=PDF_variance(i)+...
+            ((((j+1/2+bin_bias)*delta_p)-PDF_mean(i))^2)*PDF(i,j);
+    end
+    PDF_variance(i)=sqrt(PDF_variance(i))
+end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+%end
+%end funzione
