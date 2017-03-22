@@ -1,6 +1,6 @@
 %% stadio 1
 
-function [Cin, W13, W14, W15, W16, W17, W18, W19, W20, W21, W22] = stadio1()
+function [Cin, W13, W14, W15, W16, W17, W18, W19, W20, W21, W22] = stadio1(tau1,Cl)
 
 % constants
 Cox = CoxCapacity();
@@ -9,10 +9,10 @@ Cox = CoxCapacity();
 L = 0.12*10^-6;
 
 % load capacity for this stage
-Cl = stadio2()+stadio22();
+
 
 % delay for this stage
-tau1 = 65 * 10^-12 ;
+
 
 % ratios
 ratio1eqP = ratioMos('P', Cl, tau1);

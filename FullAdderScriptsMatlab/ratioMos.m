@@ -1,4 +1,4 @@
-%% function to find the ratio of a NMOS
+%% function to find the ratio of a NMOS/pMOS
 
 function [ratio] = ratioMos(type, Cl, tau)
 
@@ -19,7 +19,8 @@ elseif (type=='P')
     ratio = 2*Cl*Vdd / (tau*muP*Cox*(Vdd+Vthp)^2);
 else
     ratio = 0;
-    display('Input error.');
+    warning('Input error.');
+    return;
 end
 
 end

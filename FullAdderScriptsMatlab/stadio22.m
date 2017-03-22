@@ -1,6 +1,6 @@
 %% stadio 2
 
-function [Cin, W23, W24, W25] = stadio22()
+function [Cin, W23, W24, W25] = stadio22(tau22)
 
 % constants
 Cox = CoxCapacity();
@@ -12,7 +12,7 @@ L = 0.12*10^-6;
 Cl22 = 100 * 10^-15;
 
 % delay for this stage
-tau22 = (65*2) * 10^-12 ;
+
 
 % ratios
 ratio23 = ratioMos('P', Cl22, tau22);

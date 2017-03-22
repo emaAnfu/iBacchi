@@ -1,6 +1,6 @@
 %% stadio 3
 
-function [Cin, W1, W2, W3] = stadio3()
+function [Cin, W1, W2, W3] = stadio3(tau3)
 
 Cox = CoxCapacity();
 
@@ -11,7 +11,7 @@ L = 0.12*10^-6;
 Cl3 = 100 * 10^-15;
 
 % delay for this stage
-tau3 = 65 * 10^-12 ;
+
 
 % ratios
 
@@ -22,9 +22,9 @@ ratioN2 = 2*ratio3eq;
 ratioN3 = 2*ratio3eq;
 
 % channel width
-W1 = L * ratioP1;
-W2 = L * ratioN2;
-W3 = L * ratioN3;
+W1 = L * ceil(ratioP1);
+W2 = L * ceil(ratioN2);
+W3 = L * ceil(ratioN3);
 
 % mos capacity
 C1 = L * W1 * Cox;
