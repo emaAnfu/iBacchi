@@ -1,0 +1,54 @@
+************* Full Adder TSPC - Progetto di Microelettronica ******************
+************** Autori: Anfuso, Pedrini, Caligiuri (2016/17) *******************
+
+* Schematics Version 9.1 - Web Update 1
+* Fri Mar 03 15:25:05 2017
+
+** Analysis setup **
+.tran 0ns 4ns 0 5ps
+
+*******************************************************************************
+********* nMOS generato da MicroWind durante l'esercitazione sui CMOS *********
+* n-MOS Model 3 :
+* low leakage
+.MODEL N1 NMOS LEVEL=3 VTO=0.40 UO=600.000 TOX= 2.0E-9
+
+************************************
+* Le due righe seguenti, se commentate, restituiscono la caratteristica attesa
+* altrimenti la corrente risulta inferiore e la Vth appare molto più elevata.
+
++LD =0.000U THETA=0.500 GAMMA=0.400
++PHI=0.200 KAPPA=0.060 VMAX=120.00K
+************************************
+
++CGSO=100.0p CGDO=100.0p
++CGBO= 60.0p CJSW=240.0p
+*******************************************************************************
+
+*******************************************************************************
+********* pMOS generato da MicroWind durante l'esercitazione sui CMOS *********
+* p-MOS Model 3:
+* low leakage
+.MODEL P1 PMOS LEVEL=3 VTO=-0.45 UO=200.000 TOX= 2.0E-9
+
+************************************
+* Le due righe seguenti, se commentate, restituiscono la caratteristica attesa
+* altrimenti la corrente risulta inferiore e la Vth appare molto più elevata.
+
++LD =0.000U THETA=0.300 GAMMA=0.400
++PHI=0.200 KAPPA=0.060 VMAX=110.00K
+************************************
+
++CGSO=100.0p CGDO=100.0p
++CGBO= 60.0p CJSW=240.0p
+*******************************************************************************
+
+* From [PSPICE NETLIST]:
+.INC "TSPC_FA.net"
+.INC "TSPC_FA.als"
+
+
+.probe
+
+
+.END
