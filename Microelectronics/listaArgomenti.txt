@@ -1,0 +1,26 @@
+Traccia relazione Microelettronica
+
+1. Introduzione: schema del circuito e specifiche
+Parlare un po' della logica TSPC (es. è evoluzione della NORA che usa troppi clock...) con info prese dall'articolo.
+Spiegare come abbiamo lavorato; fare un sunto del flusso di progetto:
+ - dimensionamento di massima (---> script MATLAB)
+ - disegno rete su P-SPICE Schematics
+ - simulazione con LT Spice IV
+ - fitting dei parametri (la caratteristica del MOS usata nel progetto è molto approssimata)
+ - disegno maschere
+
+2. Analisi del funzionamento e dimensionamento di massima
+Qui mettiamo lo schema e diciamo in poche parole come il dato si trasferisce dagli ingressi alle uscite.
+Modello del MOS da noi usato.
+Dimensionamento (formule del MOS e formule da noi usate --> tutti i conti).
+Descrizione dello script MATLAB (e motivazione della sua realizzazione --> se cambiasse tecnologia o specifiche avremmo già i calcoli di massima pronti)
+Simulazione buona e cattiva.
+
+3. Caratteristica reale del MOS vs ipotizzata e ridimensionamento 
+Disegno su SPICE della caratteristica del MOS. Discussione sui parametri del MOS che lo rendono non ideale (VMAX e VBS effetto body)
+Simulazione buona.
+
+4. Maschere di produzione
+Realizzazione maschere su microWind.
+Simulazione post-layout (con tutte le capacità parassite del caso).
+Compattezza
