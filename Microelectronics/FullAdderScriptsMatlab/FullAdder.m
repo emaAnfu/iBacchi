@@ -14,13 +14,13 @@ tgen = 25e-12;
 ovs = 0.80;
 
 %delay distribution over stages (the sum must be 1)
-delay3_factor = 0.5;
-delay2_factor = 0.25;
-delay1_factor = 0.25;
+delay3_factor = 0.70;
+delay2_factor = 0.20;
+delay1_factor = 0.10;
 
 %folder where save Netlist
 folder = ...
-    'D:\INGEGNERIA\Microelectronics\microEl_AnfusoPedriniCaligiuri\TSPC_FA\';
+    'D:\INGEGNERIA\Microelectronics\iBacchi\Microelectronics\TSPC_FA_SPICE\';
 
 %%%%%%%%%%%%%%%%% CALCOLUS %%%%%%%%%%%%%%%%%%%
 
@@ -31,7 +31,7 @@ tval = 1/(f*2);
 delay = (tval - tgen) * ovs;
 
 %compute stages delays
-if(delay3_factor + delay2_factor + delay1_factor ~= 1)
+if(abs(delay3_factor + delay2_factor + delay1_factor - 1) > 1e-10)
     warning('UNCORRECT Delay distribution!');
     return;
 end
