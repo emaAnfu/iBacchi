@@ -1,7 +1,7 @@
 function [] = generateNet(W,L,folder)
 
 %********** open file **************
-f = fopen([folder,'TSPC_FA.net'],'w');
+f = fopen([folder,'TSPC_FA_CreatedByMATLAB.net'],'w');
 if(f == -1)
     warning('STOPPED. Unable to create observer.c file!');
     return;
