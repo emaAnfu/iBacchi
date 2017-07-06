@@ -1,7 +1,7 @@
-
-**** 07/06/17 11:18:06 *********** Evaluation PSpice (Nov 1999) **************
 
- * D:\INGEGNERIA\Microelectronics\VALLE\nMOSCaratt\nMosCaratt.sch
+**** 07/06/17 11:25:38 *********** Evaluation PSpice (Nov 1999) **************
+
+ * C:\Users\emanu\Documents\A_UNIVERSITA\iBacchi\Microelectronics Mod. B - Valle\nMOSCaratt\nMosCaratt.sch
 
 
  ****     CIRCUIT DESCRIPTION
@@ -13,7 +13,7 @@
 
 
 * Schematics Version 9.1 - Web Update 1
-* Thu Jul 06 11:18:06 2017
+* Thu Jul 06 11:22:47 2017
 
 
 
@@ -24,8 +24,9 @@
 
 
 * From [PSPICE NETLIST] section of pspiceev.ini:
+---------------------------------------------------------------------$
+ERROR -- Can't find library
 .lib "nom.lib"
-.lib "C:\Program Files\OrCAD_Demo\Capture\Library\Pspice\uwind.lib"
 
 .INC "nMosCaratt.net"
 
@@ -60,216 +61,4 @@ V_Vgs           Vgs(+=$N_0001 -=0 )
 
 
 .END
-
-WARNING -- Mosfet M_M1, model MODN: Pd = 0 is less than W
-WARNING -- Mosfet M_M1, model MODN: Ps = 0 is less than W
-**** 07/06/17 11:18:06 *********** Evaluation PSpice (Nov 1999) **************
-
- * D:\INGEGNERIA\Microelectronics\VALLE\nMOSCaratt\nMosCaratt.sch
-
-
- ****     MOSFET MODEL PARAMETERS
-
-
-******************************************************************************
-
-
-
-
-               MODN            
-               NMOS            
-  T_Measured   27            
-   T_Current   27            
-       LEVEL    7            
-           L  100.000000E-06 
-           W  100.000000E-06 
-         VTO     .4979       
-          KP  273.516300E-06 
-       GAMMA    0            
-      LAMBDA    0            
-         RSH   70            
-          IS    0            
-          JS  510.000000E-09 
-        JSSW  600.000000E-15 
-          PB    1            
-        PBSW     .69         
-          CJ  840.000000E-06 
-        CJSW  250.000000E-12 
-          MJ     .34         
-        MJSW     .23         
-          FC    0            
-        CGSO  120.000000E-12 
-        CGDO  120.000000E-12 
-        CGBO  110.000000E-12 
-         TOX    7.575000E-09 
-          XJ  300.000000E-09 
-       UCRIT   10.000000E+03 
-       DELTA     .01442      
-          KF   21.700000E-27 
-          AF    1.507        
-        NLEV    0            
-      DIOMOD    2            
-          K1     .50296      
-          K2     .033985     
-        LETA    0            
-        WETA    0            
-          U0  475.8          
-       XPART    1            
-        VTH0     .4979       
-          K3   -1.136        
-          W0  267.300000E-09 
-         NLX  188.800000E-09 
-        DVT0   50            
-        DVT1    1.039        
-          UA    4.705000E-12 
-          UB    2.137000E-18 
-          UC   10.000000E-21 
-        VSAT  133.800000E+03 
-        RDSW  344.9          
-        VOFF    -.08925      
-     NFACTOR     .4136       
-        CDSC    0            
-        PCLM     .6948       
-      PDIBL1     .3571       
-      PDIBL2    2.065000E-03 
-       DROUT     .5          
-      PSCBE1  :00.000000E+27 
-      PSCBE2    1.000000E-06 
-          A0    2.541        
-          A1    0            
-          A2    1            
-       NPEAK  261.100000E+15 
-         LDD    0            
-        LITL   82.568160E-09 
-         KT1    -.3302       
-         UA1    0            
-         UB1    0            
-         UC1    0            
-        KETA     .02032      
-        ETA0     .01415      
-        ETAB    -.1221       
-         K3B    -.4399       
-        DVT2   -8.375000E-03 
-       CDSCB    1.500000E-03 
-         CIT  444.100000E-06 
-        DSUB     .5          
-         UTE   -1.8          
-      NOIMOD    3            
-       CDSCD    1.000000E-03 
-         AGS     .2408       
-       DVT0W     .1089       
-       DVT1W   66.710000E+03 
-       DVT2W    -.01352      
-        PRWB    -.2416       
-     PDIBLCB     .3222       
-          B0    4.301000E-09 
-      ALPHA0    2.600000E-06 
-       BETA0   21            
-        CGSL  131.000000E-12 
-        CGDL  131.000000E-12 
-         CLC    1.000000E-15 
-        LINT  -50.050000E-09 
-        WINT   94.030000E-09 
-          WW  -12.970000E-15 
-         WWL   -9.411000E-21 
-         DLC   30.000000E-09 
-         DWC   94.030000E-09 
-          CF    0            
-        NOIA   11.210000E+18 
-        NOIB   53.360000E+03 
-        NOIC -589.200000E-15 
-         VTM     .025864     
-     VERSION    3.24         
-         XTI    2.026        
-       PBSWG     .69         
-       MJSWG     .23         
-       CJSWG  250.000000E-12 
-       JTSCD  510.000000E-09 
-      JSTSCD  600.000000E-15 
-      ALPHA1    5            
-
-
-WARNING -- Mosfet M_M1, model MODN: Pd = 0 is less than W
-WARNING -- Mosfet M_M1, model MODN: Ps = 0 is less than W
-**** 07/06/17 11:18:06 *********** Evaluation PSpice (Nov 1999) **************
-
- * D:\INGEGNERIA\Microelectronics\VALLE\nMOSCaratt\nMosCaratt.sch
-
-
- ****     SMALL SIGNAL BIAS SOLUTION       TEMPERATURE =   27.000 DEG C
-
-
-******************************************************************************
-
-
-
- NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
-
-
-($N_0001)    1.0000                   ($N_0002)    0.0000                   
-
-
-
-
-    VOLTAGE SOURCE CURRENTS
-    NAME         CURRENT
-
-    V_Vds        0.000E+00
-    V_Vgs        0.000E+00
-
-    TOTAL POWER DISSIPATION   0.00E+00  WATTS
-
-
-**** 07/06/17 11:18:06 *********** Evaluation PSpice (Nov 1999) **************
-
- * D:\INGEGNERIA\Microelectronics\VALLE\nMOSCaratt\nMosCaratt.sch
-
-
- ****     OPERATING POINT INFORMATION      TEMPERATURE =   27.000 DEG C
-
-
-******************************************************************************
-
-
-
-
-
-
-**** MOSFETS
-
-
-NAME         M_M1      
-MODEL        MODN      
-ID           0.00E+00 
-VGS          1.00E+00 
-VDS          0.00E+00 
-VBS          0.00E+00 
-VTH          5.17E-01 
-VDSAT        3.36E-01 
-Lin0/Sat1   -1.00E+00 
-if          -1.00E+00 
-ir          -1.00E+00 
-TAU         -1.00E+00 
-GM           0.00E+00 
-GDS          7.48E-05 
-GMB          0.00E+00 
-CBD          0.00E+00 
-CBS          0.00E+00 
-CGSOV        1.68E-16 
-CGDOV        1.68E-16 
-CGBOV        1.54E-16 
- Derivatives of gate (dQg/dVxy) and bulk (dQb/dVxy) charges
-DQGDVGB      8.37E-15 
-DQGDVDB     -3.87E-15 
-DQGDVSB     -4.59E-15 
-DQDDVGB     -4.10E-15 
-DQDDVDB      8.74E-15 
-DQDDVSB     -3.49E-15 
-DQBDVGB     -1.76E-16 
-DQBDVDB     -2.06E-15 
-DQBDVSB      1.86E-17 
-
-          JOB CONCLUDED
-
-          TOTAL JOB TIME             .03
 

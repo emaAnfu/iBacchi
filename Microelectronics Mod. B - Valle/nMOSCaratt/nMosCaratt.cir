@@ -1,7 +1,7 @@
-* D:\INGEGNERIA\Microelectronics\VALLE\nMOSCaratt\nMosCaratt.sch
+* C:\Users\emanu\Documents\A_UNIVERSITA\iBacchi\Microelectronics Mod. B - Valle\nMOSCaratt\nMosCaratt.sch
 
 * Schematics Version 9.1 - Web Update 1
-* Thu Jul 06 11:18:06 2017
+* Thu Jul 06 11:22:47 2017
 
 
 
@@ -13,7 +13,6 @@
 
 * From [PSPICE NETLIST] section of pspiceev.ini:
 .lib "nom.lib"
-.lib "C:\Program Files\OrCAD_Demo\Capture\Library\Pspice\uwind.lib"
 
 .INC "nMosCaratt.net"
 .INC "nMosCaratt.als"
