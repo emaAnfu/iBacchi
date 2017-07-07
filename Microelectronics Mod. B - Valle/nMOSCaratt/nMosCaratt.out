@@ -1,5 +1,5 @@
 
-**** 07/07/17 09:56:29 *********** Evaluation PSpice (Nov 1999) **************
+**** 07/07/17 12:00:30 *********** Evaluation PSpice (Nov 1999) **************
 
  * D:\INGEGNERIA\Microelectronics\iBacchi\Microelectronics Mod. B - Valle\nMOSCaratt\nMosCaratt.sch
 
@@ -63,7 +63,7 @@ V_V6            V6(+=$N_0001 -=$N_0002 )
 
 WARNING -- Mosfet M_M1, model MODN: Pd = 0 is less than W
 WARNING -- Mosfet M_M1, model MODN: Ps = 0 is less than W
-**** 07/07/17 09:56:29 *********** Evaluation PSpice (Nov 1999) **************
+**** 07/07/17 12:00:30 *********** Evaluation PSpice (Nov 1999) **************
 
  * D:\INGEGNERIA\Microelectronics\iBacchi\Microelectronics Mod. B - Valle\nMOSCaratt\nMosCaratt.sch
 
@@ -191,7 +191,7 @@ WARNING -- Mosfet M_M1, model MODN: Ps = 0 is less than W
 
 WARNING -- Mosfet M_M1, model MODN: Pd = 0 is less than W
 WARNING -- Mosfet M_M1, model MODN: Ps = 0 is less than W
-**** 07/07/17 09:56:29 *********** Evaluation PSpice (Nov 1999) **************
+**** 07/07/17 12:00:30 *********** Evaluation PSpice (Nov 1999) **************
 
  * D:\INGEGNERIA\Microelectronics\iBacchi\Microelectronics Mod. B - Valle\nMOSCaratt\nMosCaratt.sch
 
@@ -220,7 +220,7 @@ WARNING -- Mosfet M_M1, model MODN: Ps = 0 is less than W
     TOTAL POWER DISSIPATION   8.07E-06  WATTS
 
 
-**** 07/07/17 09:56:29 *********** Evaluation PSpice (Nov 1999) **************
+**** 07/07/17 12:00:30 *********** Evaluation PSpice (Nov 1999) **************
 
  * D:\INGEGNERIA\Microelectronics\iBacchi\Microelectronics Mod. B - Valle\nMOSCaratt\nMosCaratt.sch
 
@@ -271,5 +271,5 @@ DQBDVSB     -6.79E-16
 
           JOB CONCLUDED
 
-          TOTAL JOB TIME             .05
+          TOTAL JOB TIME             .03
 

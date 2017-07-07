@@ -1,0 +1,25 @@
+* D:\INGEGNERIA\Microelectronics\iBacchi\Microelectronics Mod. B - Valle\pMOSCaratt\MOSp.sch
+
+* Schematics Version 9.1 - Web Update 1
+* Fri Jul 07 10:12:10 2017
+
+
+
+** Analysis setup **
+.DC LIN V_Vgs 0 3.3V 0.01V 
+.OP 
+.LIB "MOSp.lib"
+
+
+* From [PSPICE NETLIST] section of pspiceev.ini:
+.lib "nom.lib"
+.lib "C:\Program Files\OrCAD_Demo\Capture\Library\Pspice\uwind.lib"
+
+.INC "MOSp.net"
+.INC "MOSp.als"
+
+
+.probe
+
+
+.END
