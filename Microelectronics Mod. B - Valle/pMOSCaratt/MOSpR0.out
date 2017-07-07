@@ -1,7 +1,7 @@
 
-**** 07/07/17 14:56:32 *********** Evaluation PSpice (Nov 1999) **************
+**** 07/07/17 14:55:33 *********** Evaluation PSpice (Nov 1999) **************
 
- * D:\INGEGNERIA\Microelectronics\iBacchi\Microelectronics Mod. B - Valle\pMOSCaratt\MOSp.sch
+ * D:\INGEGNERIA\Microelectronics\iBacchi\Microelectronics Mod. B - Valle\pMOSCaratt\MOSpR0.sch
 
 
  ****     CIRCUIT DESCRIPTION
@@ -13,12 +13,13 @@
 
 
 * Schematics Version 9.1 - Web Update 1
-* Fri Jul 07 14:50:31 2017
+* Fri Jul 07 14:55:30 2017
 
 
 
 ** Analysis setup **
-.DC LIN V_Vgs 0 3.3V 0.01V 
+.DC LIN V_Vds 0 3.3V 0.01V 
++ LIN V_Vgs 0 3.3V 0.2 
 .OP 
 .LIB "MOSp.lib"
 
@@ -27,35 +28,35 @@
 .lib "nom.lib"
 .lib "C:\Program Files\OrCAD_Demo\Capture\Library\Pspice\uwind.lib"
 
-.INC "MOSp.net"
+.INC "MOSpR0.net"
 
-**** INCLUDING MOSp.net ****
+**** INCLUDING MOSpR0.net ****
 * Schematics Netlist *
 
 
 
-V_Vgs         $N_0001 $N_0002 0.9V
-M_P1         0 $N_0002 $N_0001 $N_0001 MODP  
+M_P1         0 $N_0001 $N_0002 $N_0002 MODP  
 + L=1.4u  
 + W=1.4u         
-V_V4         0 $N_0002 0.5V
+V_Vds         $N_0002 0 0V
+V_Vgs         $N_0002 $N_0001 1.01V
 
-**** RESUMING MOSp.cir ****
-.INC "MOSp.als"
+**** RESUMING MOSpR0.cir ****
+.INC "MOSpR0.als"
 
 
 
-**** INCLUDING MOSp.als ****
+**** INCLUDING MOSpR0.als ****
 * Schematics Aliases *
 
 .ALIASES
-V_Vgs           Vgs(+=$N_0001 -=$N_0002 )
-M_P1            P1(d=0 g=$N_0002 s=$N_0001 b=$N_0001 )
-V_V4            V4(+=0 -=$N_0002 )
+M_P1            P1(d=0 g=$N_0001 s=$N_0002 b=$N_0002 )
+V_Vds           Vds(+=$N_0002 -=0 )
+V_Vgs           Vgs(+=$N_0002 -=$N_0001 )
 .ENDALIASES
 
 
-**** RESUMING MOSp.cir ****
+**** RESUMING MOSpR0.cir ****
 .probe
 
 
@@ -63,9 +64,9 @@ V_V4            V4(+=0 -=$N_0002 )
 
 WARNING -- Mosfet M_P1, model MODP: Pd = 0 is less than W
 WARNING -- Mosfet M_P1, model MODP: Ps = 0 is less than W
-**** 07/07/17 14:56:32 *********** Evaluation PSpice (Nov 1999) **************
+**** 07/07/17 14:55:33 *********** Evaluation PSpice (Nov 1999) **************
 
- * D:\INGEGNERIA\Microelectronics\iBacchi\Microelectronics Mod. B - Valle\pMOSCaratt\MOSp.sch
+ * D:\INGEGNERIA\Microelectronics\iBacchi\Microelectronics Mod. B - Valle\pMOSCaratt\MOSpR0.sch
 
 
  ****     MOSFET MODEL PARAMETERS
@@ -192,9 +193,9 @@ WARNING -- Mosfet M_P1, model MODP: Ps = 0 is less than W
 
 WARNING -- Mosfet M_P1, model MODP: Pd = 0 is less than W
 WARNING -- Mosfet M_P1, model MODP: Ps = 0 is less than W
-**** 07/07/17 14:56:32 *********** Evaluation PSpice (Nov 1999) **************
+**** 07/07/17 14:55:33 *********** Evaluation PSpice (Nov 1999) **************
 
- * D:\INGEGNERIA\Microelectronics\iBacchi\Microelectronics Mod. B - Valle\pMOSCaratt\MOSp.sch
+ * D:\INGEGNERIA\Microelectronics\iBacchi\Microelectronics Mod. B - Valle\pMOSCaratt\MOSpR0.sch
 
 
  ****     SMALL SIGNAL BIAS SOLUTION       TEMPERATURE =   27.000 DEG C
@@ -207,7 +208,7 @@ WARNING -- Mosfet M_P1, model MODP: Ps = 0 is less than W
  NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
 
 
-($N_0001)     .4000                   ($N_0002)    -.5000                   
+($N_0001)   -1.0100                   ($N_0002)    0.0000                   
 
 
 
@@ -215,15 +216,15 @@ WARNING -- Mosfet M_P1, model MODP: Ps = 0 is less than W
     VOLTAGE SOURCE CURRENTS
     NAME         CURRENT
 
-    V_Vgs       -5.558E-07
-    V_V4         5.558E-07
+    V_Vds        0.000E+00
+    V_Vgs        0.000E+00
 
-    TOTAL POWER DISSIPATION   2.22E-07  WATTS
+    TOTAL POWER DISSIPATION   0.00E+00  WATTS
 
 
-**** 07/07/17 14:56:32 *********** Evaluation PSpice (Nov 1999) **************
+**** 07/07/17 14:55:33 *********** Evaluation PSpice (Nov 1999) **************
 
- * D:\INGEGNERIA\Microelectronics\iBacchi\Microelectronics Mod. B - Valle\pMOSCaratt\MOSp.sch
+ * D:\INGEGNERIA\Microelectronics\iBacchi\Microelectronics Mod. B - Valle\pMOSCaratt\MOSpR0.sch
 
 
  ****     OPERATING POINT INFORMATION      TEMPERATURE =   27.000 DEG C
@@ -241,36 +242,36 @@ WARNING -- Mosfet M_P1, model MODP: Ps = 0 is less than W
 
 NAME         M_P1      
 MODEL        MODP      
-ID          -5.56E-07 
-VGS         -9.00E-01 
-VDS         -4.00E-01 
+ID           0.00E+00 
+VGS         -1.01E+00 
+VDS          0.00E+00 
 VBS          0.00E+00 
 VTH         -7.62E-01 
-VDSAT       -1.61E-01 
+VDSAT       -2.51E-01 
 Lin0/Sat1   -1.00E+00 
 if          -1.00E+00 
 ir          -1.00E+00 
 TAU         -1.00E+00 
-GM           6.36E-06 
-GDS          3.27E-08 
-GMB          1.66E-06 
+GM           0.00E+00 
+GDS          1.14E-05 
+GMB          0.00E+00 
 CBD          0.00E+00 
 CBS          0.00E+00 
 CGSOV        1.20E-16 
 CGDOV        1.20E-16 
 CGBOV        1.54E-16 
  Derivatives of gate (dQg/dVxy) and bulk (dQb/dVxy) charges
-DQGDVGB      6.45E-15 
-DQGDVDB     -2.72E-16 
-DQGDVSB     -4.91E-15 
-DQDDVGB     -3.09E-16 
-DQDDVDB      2.84E-16 
-DQDDVSB      3.82E-17 
-DQBDVGB     -6.23E-16 
-DQBDVDB     -2.83E-18 
-DQBDVSB     -2.06E-15 
+DQGDVGB      8.72E-15 
+DQGDVDB     -3.92E-15 
+DQGDVSB     -4.11E-15 
+DQDDVGB     -4.27E-15 
+DQDDVDB      6.79E-15 
+DQDDVSB     -1.45E-15 
+DQBDVGB     -1.76E-16 
+DQBDVDB     -6.94E-16 
+DQBDVSB     -1.97E-15 
 
           JOB CONCLUDED
 
-          TOTAL JOB TIME             .08
+          TOTAL JOB TIME             .22
 

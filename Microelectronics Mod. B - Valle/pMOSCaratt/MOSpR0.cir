@@ -1,12 +1,13 @@
-* D:\INGEGNERIA\Microelectronics\iBacchi\Microelectronics Mod. B - Valle\pMOSCaratt\MOSp.sch
+* D:\INGEGNERIA\Microelectronics\iBacchi\Microelectronics Mod. B - Valle\pMOSCaratt\MOSpR0.sch
 
 * Schematics Version 9.1 - Web Update 1
-* Fri Jul 07 14:50:31 2017
+* Fri Jul 07 14:55:30 2017
 
 
 
 ** Analysis setup **
-.DC LIN V_Vgs 0 3.3V 0.01V 
+.DC LIN V_Vds 0 3.3V 0.01V 
++ LIN V_Vgs 0 3.3V 0.2 
 .OP 
 .LIB "MOSp.lib"
 
@@ -15,8 +16,8 @@
 .lib "nom.lib"
 .lib "C:\Program Files\OrCAD_Demo\Capture\Library\Pspice\uwind.lib"
 
-.INC "MOSp.net"
-.INC "MOSp.als"
+.INC "MOSpR0.net"
+.INC "MOSpR0.als"
 
 
 .probe

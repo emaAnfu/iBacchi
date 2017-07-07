@@ -1,7 +1,7 @@
 
-**** 07/07/17 14:48:26 *********** Evaluation PSpice (Nov 1999) **************
+**** 07/07/17 14:41:14 *********** Evaluation PSpice (Nov 1999) **************
 
- * D:\INGEGNERIA\Microelectronics\iBacchi\Microelectronics Mod. B - Valle\nMOSCaratt\nMosCaratt.sch
+ * D:\INGEGNERIA\Microelectronics\iBacchi\Microelectronics Mod. B - Valle\nMOSCaratt\nMosR0.sch
 
 
  ****     CIRCUIT DESCRIPTION
@@ -13,12 +13,12 @@
 
 
 * Schematics Version 9.1 - Web Update 1
-* Fri Jul 07 14:46:05 2017
+* Fri Jul 07 14:41:11 2017
 
 
 
 ** Analysis setup **
-.DC LIN V_Vgs 0 3.3 0.01 
+.DC LIN V_Vds 0 3.3 0.01 
 .OP 
 .LIB "D:\INGEGNERIA\Microelectronics\VALLE\nMOSCaratt\nMosCaratt.lib"
 .LIB "D:\INGEGNERIA\Microelectronics\iBacchi\Microelectronics Mod. B - Valle\nMOSCaratt\nMosCaratt.lib"
@@ -28,35 +28,35 @@
 .lib "nom.lib"
 .lib "C:\Program Files\OrCAD_Demo\Capture\Library\Pspice\uwind.lib"
 
-.INC "nMosCaratt.net"
+.INC "nMosR0.net"
 
-**** INCLUDING nMosCaratt.net ****
+**** INCLUDING nMosR0.net ****
 * Schematics Netlist *
 
 
 
-V_Vgs         $N_0001 0 0.71v
 M_M1         $N_0002 $N_0001 0 0 MODN  
 + L=1.4u  
 + W=1.4u         
-V_V6         $N_0001 $N_0002 0.4V
+V_Vds         $N_0002 0 0V
+V_Vgs         $N_0001 0 0.76
 
-**** RESUMING nMosCaratt.cir ****
-.INC "nMosCaratt.als"
+**** RESUMING nMosR0.cir ****
+.INC "nMosR0.als"
 
 
 
-**** INCLUDING nMosCaratt.als ****
+**** INCLUDING nMosR0.als ****
 * Schematics Aliases *
 
 .ALIASES
-V_Vgs           Vgs(+=$N_0001 -=0 )
 M_M1            M1(d=$N_0002 g=$N_0001 s=0 b=0 )
-V_V6            V6(+=$N_0001 -=$N_0002 )
+V_Vds           Vds(+=$N_0002 -=0 )
+V_Vgs           Vgs(+=$N_0001 -=0 )
 .ENDALIASES
 
 
-**** RESUMING nMosCaratt.cir ****
+**** RESUMING nMosR0.cir ****
 .probe
 
 
@@ -64,9 +64,9 @@ V_V6            V6(+=$N_0001 -=$N_0002 )
 
 WARNING -- Mosfet M_M1, model MODN: Pd = 0 is less than W
 WARNING -- Mosfet M_M1, model MODN: Ps = 0 is less than W
-**** 07/07/17 14:48:26 *********** Evaluation PSpice (Nov 1999) **************
+**** 07/07/17 14:41:14 *********** Evaluation PSpice (Nov 1999) **************
 
- * D:\INGEGNERIA\Microelectronics\iBacchi\Microelectronics Mod. B - Valle\nMOSCaratt\nMosCaratt.sch
+ * D:\INGEGNERIA\Microelectronics\iBacchi\Microelectronics Mod. B - Valle\nMOSCaratt\nMosR0.sch
 
 
  ****     MOSFET MODEL PARAMETERS
@@ -192,9 +192,9 @@ WARNING -- Mosfet M_M1, model MODN: Ps = 0 is less than W
 
 WARNING -- Mosfet M_M1, model MODN: Pd = 0 is less than W
 WARNING -- Mosfet M_M1, model MODN: Ps = 0 is less than W
-**** 07/07/17 14:48:26 *********** Evaluation PSpice (Nov 1999) **************
+**** 07/07/17 14:41:14 *********** Evaluation PSpice (Nov 1999) **************
 
- * D:\INGEGNERIA\Microelectronics\iBacchi\Microelectronics Mod. B - Valle\nMOSCaratt\nMosCaratt.sch
+ * D:\INGEGNERIA\Microelectronics\iBacchi\Microelectronics Mod. B - Valle\nMOSCaratt\nMosR0.sch
 
 
  ****     SMALL SIGNAL BIAS SOLUTION       TEMPERATURE =   27.000 DEG C
@@ -207,7 +207,7 @@ WARNING -- Mosfet M_M1, model MODN: Ps = 0 is less than W
  NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
 
 
-($N_0001)     .7100                   ($N_0002)     .3100                   
+($N_0001)     .7600                   ($N_0002)    0.0000                   
 
 
 
@@ -215,15 +215,15 @@ WARNING -- Mosfet M_M1, model MODN: Ps = 0 is less than W
     VOLTAGE SOURCE CURRENTS
     NAME         CURRENT
 
-    V_Vgs       -2.508E-06
-    V_V6         2.508E-06
+    V_Vds        0.000E+00
+    V_Vgs        0.000E+00
 
-    TOTAL POWER DISSIPATION   7.78E-07  WATTS
+    TOTAL POWER DISSIPATION   0.00E+00  WATTS
 
 
-**** 07/07/17 14:48:26 *********** Evaluation PSpice (Nov 1999) **************
+**** 07/07/17 14:41:14 *********** Evaluation PSpice (Nov 1999) **************
 
- * D:\INGEGNERIA\Microelectronics\iBacchi\Microelectronics Mod. B - Valle\nMOSCaratt\nMosCaratt.sch
+ * D:\INGEGNERIA\Microelectronics\iBacchi\Microelectronics Mod. B - Valle\nMOSCaratt\nMosR0.sch
 
 
  ****     OPERATING POINT INFORMATION      TEMPERATURE =   27.000 DEG C
@@ -241,36 +241,36 @@ WARNING -- Mosfet M_M1, model MODN: Ps = 0 is less than W
 
 NAME         M_M1      
 MODEL        MODN      
-ID           2.51E-06 
-VGS          7.10E-01 
-VDS          3.10E-01 
+ID           0.00E+00 
+VGS          7.60E-01 
+VDS          0.00E+00 
 VBS          0.00E+00 
 VTH          5.17E-01 
-VDSAT        1.53E-01 
+VDSAT        1.85E-01 
 Lin0/Sat1   -1.00E+00 
 if          -1.00E+00 
 ir          -1.00E+00 
 TAU         -1.00E+00 
-GM           2.28E-05 
-GDS          3.14E-07 
-GMB          6.53E-06 
+GM           0.00E+00 
+GDS          3.75E-05 
+GMB          0.00E+00 
 CBD          0.00E+00 
 CBS          0.00E+00 
 CGSOV        1.68E-16 
 CGDOV        1.68E-16 
 CGBOV        1.54E-16 
  Derivatives of gate (dQg/dVxy) and bulk (dQb/dVxy) charges
-DQGDVGB      6.82E-15 
-DQGDVDB     -3.49E-16 
-DQGDVSB     -6.13E-15 
-DQDDVGB     -4.21E-16 
-DQDDVDB      4.03E-16 
-DQDDVSB      4.97E-17 
-DQBDVGB     -1.09E-15 
-DQBDVDB     -2.28E-17 
-DQBDVSB     -7.81E-16 
+DQGDVGB      8.38E-15 
+DQGDVDB     -3.66E-15 
+DQGDVSB     -4.79E-15 
+DQDDVGB     -4.10E-15 
+DQDDVDB      8.26E-15 
+DQDDVSB     -3.01E-15 
+DQBDVGB     -1.86E-16 
+DQBDVDB     -1.94E-15 
+DQBDVSB     -9.72E-17 
 
           JOB CONCLUDED
 
-          TOTAL JOB TIME             .06
+          TOTAL JOB TIME             .03
 

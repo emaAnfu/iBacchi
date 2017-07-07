@@ -1,0 +1,9 @@
+* Schematics Netlist *
+
+
+
+M_P1         0 $N_0001 $N_0002 $N_0002 MODP  
++ L=1.4u  
++ W=1.4u         
+V_Vds         $N_0002 0 0V
+V_Vgs         $N_0002 $N_0001 1.01V
