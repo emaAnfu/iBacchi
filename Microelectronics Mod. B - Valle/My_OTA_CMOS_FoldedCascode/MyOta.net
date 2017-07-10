@@ -1,18 +1,18 @@
-* D:\INGEGNERIA\Microelectronics\iBacchi\Microelectronics Mod. B - Valle\My_OTA_CMOS_FoldedCascode\MyOta.asc
-M2 N002 in2 N006 0 MODN l=1.4u w=36.4u
-M1 N003 in1 N006 0 MODN l=1.4u w=36.4u
-M4 N002 Vbias1 out power MODP l=1.4u w=92.4u
+* C:\Users\emanu\Documents\A_UNIVERSITA\iBacchi\Microelectronics Mod. B - Valle\My_OTA_CMOS_FoldedCascode\MyOta.asc
+M2 N003 in2 N005 0 MODN l=1.4u w=36.4u
+M1 N002 in1 N005 0 MODN l=1.4u w=36.4u
+M4 N003 Vbias1 out power MODP l=1.4u w=92.4u
 M6 out N004 N008 0 MODN l=1.4u w=36.4u
 M8 N008 N007 0 0 MODN l=1.4u w=36.4u
-M10 power N001 N002 power MODP l=1.4u w=184.8u
-M11 N006 N005 0 NC_01 MODN l=1.4u w=72.8u
+M10 power N001 N003 power MODP l=1.4u w=184.8u
+M11 N005 N006 0 0 MODN l=1.4u w=72.8u
 VDD power 0 3.3
-M3 N003 Vbias1 N004 power MODP l=1.4u w=92.4u
-M9 power N001 N003 power MODP l=1.4u w=184.8u
+M3 N002 Vbias1 N004 power MODP l=1.4u w=92.4u
+M9 power N001 N002 power MODP l=1.4u w=184.8u
 M5 N004 N004 N007 0 MODN l=1.4u w=36.4u
 M7 N007 N007 0 0 MODN l=1.4u w=36.4u
-M12 N005 N005 0 0 MODN l=1.4u w=72.8u
-I power N005 200µ
+M12 N006 N006 0 0 MODN l=1.4u w=72.8u
+I power N006 200µ
 M13 power N001 N001 power MODP l=1.4u w=184.8u
 IB N001 0 200µ
 Vicm icm 0 2
@@ -22,7 +22,7 @@ V3 Vbias1 0 1.87
 C1 out 0 5p
 .model NMOS NMOS
 .model PMOS PMOS
-.lib C:\PROGRA~2\LTC\LTSPIC~1\lib\cmp\standard.mos
+.lib C:\Users\emanu\Documents\LTspiceXVII\lib\cmp\standard.mos
 .MODEL MODN NMOS LEVEL=7
 *LEVEL=49 
 * ----------------------------------------------------------------------
@@ -213,7 +213,8 @@ C1 out 0 5p
 * ----------------------------------------------------------------------
 * Owner: austriamicrosystems
 * HIT-Kit: Digital
-.ac dec 500 1 100meg
 ;tran 500m
+;tran 500m
+.ac dec 500 1 100meg
 .backanno
 .end
