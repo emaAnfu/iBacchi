@@ -7,7 +7,7 @@ clear all
 % flagFinestra = Se TRUE finestro con Hamming
 % flagPlot = Se TRUE grafico
 
-%input
+%input;
 fileName='EmaProvaFinale.wav';
 flagSogliaEnergia=true;
 flagFinestra=true;
