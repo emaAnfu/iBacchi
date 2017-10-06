@@ -1,0 +1,11 @@
+\select@language {italian}
+\select@language {italian}
+\contentsline {chapter}{\numberline {1}Introduzione}{1}{chapter.2}
+\contentsline {chapter}{\numberline {2}Analisi}{2}{chapter.3}
+\contentsline {section}{\numberline {2.1}Il modello MOS}{2}{section.4}
+\contentsline {section}{\numberline {2.2}Il Full Adder TSPC}{2}{section.5}
+\contentsline {chapter}{\numberline {3}Progettazione}{3}{chapter.6}
+\contentsline {section}{\numberline {3.1}Dimensionamento dei transistor}{3}{section.7}
+\contentsline {section}{\numberline {3.2}Layout fisico}{3}{section.8}
+\contentsline {chapter}{\numberline {4}Simulazione}{4}{chapter.9}
+\contentsline {chapter}{\numberline {5}Conclusioni finali}{5}{chapter.10}

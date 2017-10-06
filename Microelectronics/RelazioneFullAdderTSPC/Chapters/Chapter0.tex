@@ -1,0 +1,69 @@
+% Chapter 1
+
+\chapter{Templates} % Write in your own chapter title
+\label{Chapter0} page header
+
+Testo normale... \emph{corsivo} oppure \textbf{grassetto}.
+Se vai a capo, non va a capo!!!
+
+Per andare a capo devo lasciare una linea vuota, e inizia un nuovo paragrafo.
+
+Se proprio vuoi andare a capo \\ fai così.
+
+Elenco puntato:
+\begin{itemize}
+	\item primo elemento
+	\item secondo elemento
+\end{itemize}
+
+Elenco numerato:
+\begin{enumerate}
+	\item primo elemento
+	\item secondo elemento
+\end{enumerate}
+
+\section{Equazioni}
+\label{sec:equazioni}
+
+\subsection{Simboli matematici}
+
+\subsubsection{Operatori}
+
+Per scrivere simboli matematici nel testo usi i dollari. Per esempio $\alpha$, $y = x-3$ senza dollaro y = x-3. Altri esempi $x^2$, $x_1-x_2^3$, $y = e^{-\frac{x^2}{\sigma}}$.
+
+\subsection{Equazioni grandi}
+
+Se voglio scrivere un'equazione grande:
+
+\begin{equation}
+A = \begin{bmatrix}
+		1 & 0 & 3 \\
+		2 & 4 & 1 \\
+		10 & 5 & 7 \\
+		\end{bmatrix}
+		\label{eq:matrice}
+\end{equation}
+
+\begin{equation}
+y = \begin{cases}
+		x^2-4, \quad \textrm{if } x \geq 0 \\
+		-\frac{1}{x}, \quad \textrm{if } x < 0
+		\end{cases}
+		\label{eq:sistema}
+\end{equation}
+
+Come mostrato nella sezione \ref{sec:equazioni} e in eq. \eqref{eq:sistema}.
+
+Qui sotto c'è la Fig. \ref{fig:logo}:
+\begin{figure}[hbt!]
+\centering
+\includegraphics[width=0.5\textwidth]{figure/logounige.jpg}
+\caption{Questa è la didascalia}
+\label{fig:logo}
+\end{figure}
+
+
+
+
+
+
