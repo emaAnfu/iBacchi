@@ -9,18 +9,23 @@ Spiegare come abbiamo lavorato; fare un sunto del flusso di progetto:
  - fitting dei parametri (la caratteristica del MOS usata nel progetto è molto approssimata)
  - disegno maschere
 
-2. Analisi del funzionamento e dimensionamento di massima
-Qui mettiamo lo schema e diciamo in poche parole come il dato si trasferisce dagli ingressi alle uscite.
-Modello del MOS da noi usato.
-Dimensionamento (formule del MOS e formule da noi usate --> tutti i conti).
+2. Analisi
+- Full adder TSPC: qui mettiamo lo schema e diciamo in poche parole come il dato si trasferisce dagli ingressi alle uscite.
+- Modello del MOS e carica di un condensatore.
+- Caratteristica reale del MOS vs ipotizzata: disegno su SPICE della caratteristica del MOS; discussione sui parametri del MOS che lo rendono non ideale (VMAX e VBS effetto body). Il nostro modello può fornire solo una base di partenza --> la progettazione si divide in dimensionamento di massima e fitting dei parametri.
+Perché non usare subito i parametri nuovi ricavati sperimentalmente? Perché verrebbero fuori MOS di dimensioni molto elevate.
+
+3. Progettazione circuitale
+- Dimensionamento di massima dei MOS: dalla formula dell'analisi, ricaviamo il W/L; fissiamo lunghezza minima e calcoliamo W; usiamo come capacità di carico di ogni stadio la capacità d'ingresso dello stadio successivo (approx alla capacità dei gate da pilotare). Usiamo MATLAB e otteniamo una tabella di W/L. 
 Descrizione dello script MATLAB (e motivazione della sua realizzazione --> se cambiasse tecnologia o specifiche avremmo già i calcoli di massima pronti)
-Simulazione buona e cattiva.
+Prima simulazione: fa schifo. Ci siamo spiegati perché fa così schifo: soprattutto inadeguatezza del modello del 2° ordine (già nota) ma anche approssimazioni sulle capacità dei MOS (non ci sono ancora i collegamenti).
+- Fitting dei parametri e simulazione buona (pre-layout): dopo un'attenta analisi dei segnali intermedi ottenuti mediante simulazioni, abbiamo agito sulle singole dimensioni dei transistor critici e, per approssimazioni successive, ci siamo avvicinati ad una soluzione soddisfacente.
+Ottenute simulazioni buone (METTERLE), abbiamo proceduto con il layout.
 
-3. Caratteristica reale del MOS vs ipotizzata e ridimensionamento 
-Disegno su SPICE della caratteristica del MOS. Discussione sui parametri del MOS che lo rendono non ideale (VMAX e VBS effetto body)
-Simulazione buona.
-
-4. Maschere di produzione
-Realizzazione maschere su microWind.
-Simulazione post-layout (con tutte le capacità parassite del caso).
-Compattezza
+4. Layout
+- Introduzione: abbiamo diviso il lavoro in moduli, simulati singolarmente e poi abbiamo unito tutto.
+- Stadio 1: generazione !CARRY
+- Stadio 2.2: generazione !CARRY
+- Stadio 2: generazione !SUM
+- Stadio 3: generazione SUM
+- Full design: simulazione post-layout (con tutte le capacità parassite del caso) e commento sulle dimensioni. Approccio std cell.
