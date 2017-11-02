@@ -1,0 +1,23 @@
+* D:\INGEGNERIA\iBacchi\Microelectronics\PSpice_Various_Schematics\CMOS_with_load.sch
+
+* Schematics Version 9.1 - Web Update 1
+* Thu Nov 02 18:28:23 2017
+
+
+
+** Analysis setup **
+.tran 0ns 4ns 0 1p
+
+
+* From [PSPICE NETLIST] section of pspiceev.ini:
+.lib "nom.lib"
+.lib "C:\Program Files\OrCAD_Demo\Capture\Library\Pspice\uwind.lib"
+
+.INC "CMOS_with_load.net"
+.INC "CMOS_with_load.als"
+
+
+.probe
+
+
+.END

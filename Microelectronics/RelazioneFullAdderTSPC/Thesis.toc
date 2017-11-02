@@ -2,10 +2,12 @@
 \select@language {italian}
 \contentsline {chapter}{\numberline {1}Introduzione}{1}{chapter.2}
 \contentsline {chapter}{\numberline {2}Analisi}{2}{chapter.4}
-\contentsline {section}{\numberline {2.1}Il modello MOS}{2}{section.5}
-\contentsline {section}{\numberline {2.2}Il Full Adder TSPC}{3}{section.9}
-\contentsline {chapter}{\numberline {3}Progettazione}{4}{chapter.10}
-\contentsline {section}{\numberline {3.1}Dimensionamento dei transistor}{4}{section.11}
-\contentsline {section}{\numberline {3.2}Layout fisico}{4}{section.13}
-\contentsline {chapter}{\numberline {4}Simulazione}{6}{chapter.15}
-\contentsline {chapter}{\numberline {5}Conclusioni finali}{7}{chapter.16}
+\contentsline {section}{\numberline {2.1}Il modello del MOS}{2}{section.5}
+\contentsline {section}{\numberline {2.2}Funzionamento dinamico dei circuiti CMOS}{3}{section.8}
+\contentsline {section}{\numberline {2.3}Il Full Adder TSPC}{5}{section.19}
+\contentsline {section}{\numberline {2.4}La caratteristica reale del MOS}{5}{section.20}
+\contentsline {chapter}{\numberline {3}Progettazione}{7}{chapter.21}
+\contentsline {section}{\numberline {3.1}Dimensionamento dei transistor}{7}{section.22}
+\contentsline {section}{\numberline {3.2}Layout fisico}{7}{section.24}
+\contentsline {chapter}{\numberline {4}Simulazione}{9}{chapter.26}
+\contentsline {chapter}{\numberline {5}Conclusioni finali}{10}{chapter.27}

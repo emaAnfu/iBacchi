@@ -1,0 +1,10 @@
+* Schematics Netlist *
+
+
+
+V_Vdd         $N_0001 0 1.2V
+M_M2         $N_0003 $N_0002 $N_0001 $N_0001 MbreakP           
+M_M1         $N_0003 $N_0002 0 0 MbreakN           
+C_Cload         0 $N_0003  1n  
+V_Vin         $N_0002 0 DC 0 AC 0
++PULSE 0 1.2 0 10p 10p 250p 500p
