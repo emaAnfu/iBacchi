@@ -4,12 +4,10 @@
 \label{Chapter2}
 \lhead{\emph{Analisi}}
 
-\section{Il modello del MOS}
+\section{Il modello semplificato del MOS}
 \label{sec:sec_mos}
 
 Dato che il circuito trattato in questo progetto è basato su tecnologia CMOS è doveroso iniziare con l'analisi del \textit{mattoncino base} che lo compone, ossia il transistor di tipo MOSFET.
-
-In Fig. \ref{fig:simboliMos} il simbolo per un NMOS.
 
 \begin{figure}[hbt!]
 	\centering
@@ -18,14 +16,49 @@ In Fig. \ref{fig:simboliMos} il simbolo per un NMOS.
 	\label{fig:simboliMos}
 \end{figure}
 
-L'eq. \ref{eq:eq_MOS_zonaSaturazione} descrive il comportamento di un MOS in zona di saturazione, impiegando un modello quadratico piuttosto semplificato:
-
-\begin{equation}
-	I_{D} = \frac{1}{2} \mu _{n} C^{'}_{ox} \frac{W}{L} (V_{GS}-V_{th})^2
+Il modello semplificato introduce una \textit{tensione di soglia} $V_{th}$ e prevede che il dispositivo possa operare in tre zone di funzionamento, illustrate di seguito. Per semplicità consideriamo un NMOS; per il PMOS i segni di correnti e tensioni sono invertiti. 
+\begin{itemize}
+	\item \textit{Interdizione} - la $V_{GS}$ è sotto la soglia e non si è formato il canale, quindi la corrente di drain è nulla:
+	\begin{equation}
+	V_{GS} < V_{th_n} \qquad \Rightarrow \qquad I_D = 0 .
+	\label{eq:eq_MOS_zonaInterdizione}
+	\end{equation}
+	
+	\item \textit{Zona lineare} - $V_{GS}$ è sopra alla soglia e il canale si estende dal drain al source:
+	\begin{equation}
+	\begin{dcases}
+	V_{GS} \geq V_{th_n} \\
+	V_{DS}<V_{GS}-V_{th_n}
+	\end{dcases}
+	\qquad \Rightarrow \qquad I_{D} = \mu _{n} C^{'}_{ox} \frac{W}{L} \left[(V_{GS}-V_{th_n})V_{DS} - \frac{V_{DS}^2}{2} \right]
+	\label{eq:eq_MOS_zonaLineare}
+	\end{equation}
+	se $V_{DS}$ è piccola il MOS si comporta come un resistore controllato da $V_{GS}$ (relazione lineare tra $V_{DS}$ e $I_D$):
+	\begin{equation}
+	I_{D} \simeq \mu _{n} C^{'}_{ox} \frac{W}{L} (V_{GS}-V_{th_n})V_{DS} .
+	\label{eq:eq_MOS_zonaLineareApprox}
+	\end{equation}
+	
+	\item \textit{saturazione} - $V_{GS}$ è sopra alla soglia e il canale presenta uno strozzamento in prossimità del drain; il MOS si comporta come un generatore di corrente $I_D$ costante, pilotato dalla tensione $V_{GS}$:
+	\begin{equation}
+	\begin{dcases}
+	V_{GS} \geq V_{th_n} \\
+	V_{DS} > V_{GS}-V_{th_n}
+	\end{dcases}
+	\qquad \Rightarrow \qquad 	I_{D} = \frac{1}{2} \mu _{n} C^{'}_{ox} \frac{W}{L} (V_{GS}-V_{th_n})^2 .
 	\label{eq:eq_MOS_zonaSaturazione}
-\end{equation}
+	\end{equation}
+\end{itemize}
 
-ed è valida quando $V_{DS} > V_{GS}-V_{th}$.
+Le grandezze $\mu _n$ (\textit{mobilità dei portatori di carica}) e $C'_{ox}$ (\textit{capacità dell’ossido per unità di area tra gate e canale}) dipendono dalla tecnologia impiegata. Nel nostro caso (\textit{Microwind} $0.12 \ \mu m$) si ha:
+\begin{itemize}
+	\item NMOS: \quad $V_{th_n,0} = 0.40 \ V$; \ \quad $\mu _n = 600 \ \dfrac{cm^2}{V \cdot s}$
+	\item PMOS: \quad $V_{th_p,0} = -0.45 \ V$; \quad $\mu _p = 200 \ \dfrac{cm^2}{V \cdot s}$
+\end{itemize}
+mentre per entrambi l'ossido ha spessore $t_{ox} = 2.0 \cdot 10^{-9} \ m$ e permittività elettrica relativa $\epsilon_{r_{Si0_2}} = 3.9$. Si ricava quindi:
+\begin{equation}
+C'_{ox} = \frac{\epsilon_0 \cdot \epsilon_r}{t_{ox}} = \dfrac{8.85 \cdot 10^{-12} \ [F/m] \cdot 3.9}{2.0 \cdot 10^{-9} \ [m]}\simeq 17.26 \cdot 10^{-3} \ \dfrac{F}{m^2}
+\end{equation}
 
 \section{La caratteristica reale del MOS}
 \label{sec:sec_caratteristicaMOS}
@@ -117,9 +150,28 @@ Una rappresentazione della carica/scarica lineare confrontata con l'andamento re
 \section{Il Full Adder TSPC}
 \label{sec:sec_fullAdder}
 
+Analizziamo ora il circuito full adder TSPC presentato da Yuan e Svensson in \cite{yuan1989high}. Lo schema è mostrato in fig. \ref{fig:fig_schemaDaArticolo}.
 
+\begin{figure}[hbt!]
+	\centering
+	\includegraphics[width=0.5\textwidth]{figure/SchemaFullAdderTSPC_DaArticolo.PNG}
+	\caption{TSPC full adder.}
+	\label{fig:fig_schemaDaArticolo}
+\end{figure}
 
+La tecnica TSPC (\textit{True single phase clock}) permette di ottimizzare le performance di circuiti CMOS, soprattutto in termini di frequenza operativa. Tale risultato è raggiunto mediante la temporizzazione del funzionamento dei circuiti CMOS e più precisamente con l'aggiunta di un segnale di clock che, nel caso del circuito in esame, identifica due sole fasi in cui può trovarsi a lavorare quest'ultimo:
 
+\begin{itemize}
+	\item \textit{Fase di precarica}: il segnale di clock $\Phi$ è a livello logico basso, per cui i MOS di tipo P pilotati da $\Phi$ si trovano in conduzione, mentre quelli di tipo N sono in interdizione. Facendo riferimento allo schema di fig.  \ref{fig:fig_schemaDaArticolo} ciò implica che durante questo semiperiodo del segnale di clock il segnale !SUM vada a livello alto, mentre i segnali SUM e CARRY, che tra l'altro sono i segnali di uscita, mantengano il valore cui si trovavano all'inizio del semiperiodo. 
+	\item \textit{Fase di valutazione}: $\Phi$ è a livello alto, i PMOS da esso pilotati non conducono, a differenza degli NMOS. Nel circuito in esame questo implica che il valore logico dei segnali SUM e CARRY dipenda da tutti i restanti segnali, ovvero A, B e C, secondo la funzione logica tipica del sommatore full adder.
+\end{itemize}
 
+Valutiamo più precisamente cosa accade durante la fase di valutazione. Per farlo consideriamo la fig. \ref{fig:fig_schemaDaArticoloStadiCerchiati} dove sono stati evidenziati i quattro stadi che compongono il circuito.
 
+\begin{figure}[hbt!]
+	\centering
+	\includegraphics[width=0.5\textwidth]{figure/SchemaFullAdderTSPC_DaArticolo_ConStadiCerchiati.PNG}
+	\caption{I quattro stadi che compongono il TSPC full adder.}
+	\label{fig:fig_schemaDaArticoloStadiCerchiati}
+\end{figure}
 

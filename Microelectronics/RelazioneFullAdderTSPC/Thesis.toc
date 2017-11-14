@@ -3,15 +3,15 @@
 \contentsline {chapter}{\numberline {1}Introduzione}{1}{chapter.2}
 \contentsline {section}{\numberline {1.1}Fasi di lavoro}{1}{section.3}
 \contentsline {chapter}{\numberline {2}Analisi}{5}{chapter.5}
-\contentsline {section}{\numberline {2.1}Il modello del MOS}{5}{section.6}
-\contentsline {section}{\numberline {2.2}La caratteristica reale del MOS}{6}{section.9}
-\contentsline {section}{\numberline {2.3}Funzionamento dinamico dei circuiti CMOS}{6}{section.10}
-\contentsline {section}{\numberline {2.4}Il Full Adder TSPC}{9}{section.21}
-\contentsline {chapter}{\numberline {3}Progettazione circuitale}{10}{chapter.22}
-\contentsline {section}{\numberline {3.1}Dimensionamento di massima}{10}{section.23}
-\contentsline {section}{\numberline {3.2}Fitting dei parametri}{10}{section.25}
-\contentsline {chapter}{\numberline {4}Layout}{11}{chapter.26}
-\contentsline {section}{\numberline {4.1}Premessa}{12}{section.28}
-\contentsline {section}{\numberline {4.2}Disegno dei singoli stadi}{12}{section.29}
-\contentsline {section}{\numberline {4.3}Full design}{12}{section.30}
-\contentsline {chapter}{\numberline {5}Conclusioni finali}{13}{chapter.31}
+\contentsline {section}{\numberline {2.1}Il modello semplificato del MOS}{5}{section.6}
+\contentsline {section}{\numberline {2.2}La caratteristica reale del MOS}{6}{section.13}
+\contentsline {section}{\numberline {2.3}Funzionamento dinamico dei circuiti CMOS}{7}{section.14}
+\contentsline {section}{\numberline {2.4}Il Full Adder TSPC}{10}{section.25}
+\contentsline {chapter}{\numberline {3}Progettazione circuitale}{12}{chapter.28}
+\contentsline {section}{\numberline {3.1}Dimensionamento di massima}{12}{section.29}
+\contentsline {section}{\numberline {3.2}Fitting dei parametri}{12}{section.31}
+\contentsline {chapter}{\numberline {4}Layout}{13}{chapter.32}
+\contentsline {section}{\numberline {4.1}Premessa}{14}{section.34}
+\contentsline {section}{\numberline {4.2}Disegno dei singoli stadi}{14}{section.35}
+\contentsline {section}{\numberline {4.3}Full design}{14}{section.36}
+\contentsline {chapter}{\numberline {5}Conclusioni finali}{15}{chapter.37}
