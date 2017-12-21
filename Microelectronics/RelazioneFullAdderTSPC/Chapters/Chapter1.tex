@@ -14,7 +14,7 @@ L'elaborato vuole descrivere nel dettaglio il lavoro svolto, i risultati raggiun
 \section{Fasi di lavoro}
 \label{sec:sec_fasiLavoro}
 
-In Fig. \ref{fig:workflow} è rappresentato il diagramma di flusso che abbiamo seguito durante il nostro lavoro. Tale sequenza di passi è generalizzabile a qualsiasi progetto di circuiti digitali, quando si parte da uno schema circuitale e si vuole giungere al disegno delle maschere di produzione che lo realizzano rispettando le specifiche desiderate. Nel diagramma ogni rettangolo indica l'operazione da eseguire, mentre il rombo comporta un controllo che determina il passo successivo da intraprendere. 
+In fig. \ref{fig:workflow} è rappresentato il diagramma di flusso che abbiamo seguito durante il nostro lavoro. Tale sequenza di passi è generalizzabile a qualsiasi progetto di circuiti digitali, quando si parte da uno schema circuitale e si vuole giungere al disegno delle maschere di produzione che lo realizzano rispettando le specifiche desiderate. Nel diagramma ogni rettangolo indica l'operazione da eseguire, mentre il rombo comporta un controllo che determina il passo successivo da intraprendere. 
 
 \begin{figure}[hbt!]
 	\centering
@@ -32,7 +32,7 @@ Prima di scendere nel dettaglio delle varie fasi introduciamo i vari software ut
 	\item \textit{Microwind}: software per il disegno di maschere di produzione di circuiti integrati.
 \end{itemize}
 
-Procediamo quindi con la descrizione del flusso di progetto di Fig. \ref{fig:workflow} in relazione al nostro lavoro. Il punto di partenza è la definizione delle specifiche di progetto. Queste nel nostro caso ci sono state fornite come consegna e sono riassunte nel seguente elenco:
+Procediamo quindi con la descrizione del flusso di progetto di fig. \ref{fig:workflow} in relazione al nostro lavoro. Il punto di partenza è la definizione delle specifiche di progetto. Queste nel nostro caso ci sono state fornite come consegna e sono riassunte nel seguente elenco:
 
 \begin{itemize}
 	\item Tensione di alimentazione $V _{DD}$: 1.2 V
@@ -44,7 +44,7 @@ Procediamo quindi con la descrizione del flusso di progetto di Fig. \ref{fig:wor
 
 Anche il tipo di tecnologia ci è stato indicato nella consegna del progetto: tecnologia CMOS 0.12$\mu m$. Questo dato è molto importante nel progetto di circuiti integrati, in quanto tra le altre cose indica la lunghezza minima di canale che possono avere i transitor MOS.
 
-La terza fase prevede l'analisi dello schema circuitale del Full Adder presente nell'articolo citato nell'introduzione. Nella sezione \ref{sec:mos} sarà illustrata l'analisi in dettaglio. A partire da quest'ultima, come vedremo, è stato possibile individuare le relazioni analitiche che ci hanno permesso di legare i nostri parametri di progetto, ottenuti a partire dalle specifiche funzionali e prestazionali, con i parametri liberi, ovvero le dimensioni dei transistor MOS presenti nel circuito. 
+La terza fase prevede l'analisi dello schema circuitale del Full Adder presente nell'articolo citato nell'introduzione. Nella sezione \ref{sec:sec_fullAdder} sarà illustrata l'analisi in dettaglio. A partire da quest'ultima, come vedremo, è stato possibile individuare le relazioni analitiche che ci hanno permesso di legare i nostri parametri di progetto, ottenuti a partire dalle specifiche funzionali e prestazionali, con i parametri liberi, ovvero le dimensioni dei transistor MOS presenti nel circuito. 
 
 Il dimensionamento dei MOS è per l'appunto la quarta fase del processo e ne rappresenta uno dei momenti più critici, in quanto getta le basi per il funzionamento del circuito finale. Esso tuttavia è basato sull'utilizzo di modelli analitici approssimati, per cui le dimensioni dei MOS trovati a questo passo non sono quelle definitive. Nel cap. \ref{Chapter3}, dedicato alla progettazione circuitale, parleremo in dettaglio di questo aspetto.
 

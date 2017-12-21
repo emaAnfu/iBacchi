@@ -8,10 +8,16 @@
 \contentsline {section}{\numberline {2.3}Funzionamento dinamico dei circuiti CMOS}{7}{section.14}
 \contentsline {section}{\numberline {2.4}Il Full Adder TSPC}{10}{section.25}
 \contentsline {chapter}{\numberline {3}Progettazione circuitale}{13}{chapter.28}
-\contentsline {section}{\numberline {3.1}Dimensionamento di massima}{13}{section.29}
-\contentsline {section}{\numberline {3.2}Fitting dei parametri}{13}{section.31}
-\contentsline {chapter}{\numberline {4}Layout}{14}{chapter.32}
-\contentsline {section}{\numberline {4.1}Premessa}{15}{section.34}
-\contentsline {section}{\numberline {4.2}Disegno dei singoli stadi}{15}{section.35}
-\contentsline {section}{\numberline {4.3}Full design}{15}{section.36}
-\contentsline {chapter}{\numberline {5}Conclusioni finali}{16}{chapter.37}
+\contentsline {section}{\numberline {3.1}Schema completo}{13}{section.29}
+\contentsline {section}{\numberline {3.2}Dimensionamento di massima}{14}{section.31}
+\contentsline {subsection}{\numberline {3.2.1}Vincoli temporali e \textit {inverter equivalente}}{14}{subsection.32}
+\contentsline {subsection}{\numberline {3.2.2}Dall'\textit {inverter equivalente} alle dimensioni dei MOS}{15}{subsection.34}
+\contentsline {subsection}{\numberline {3.2.3}Dimensioni geometriche dei MOS: risultati di \textit {MATLAB}}{16}{subsection.38}
+\contentsline {subsection}{\numberline {3.2.4}Prima simulazione \textit {pre-layout}}{16}{subsection.40}
+\contentsline {section}{\numberline {3.3}Fitting dei parametri: dimensioni definitive}{17}{section.43}
+\contentsline {subsection}{\numberline {3.3.1}Simulazione \textit {pre-layout} soddisfacente}{18}{subsection.45}
+\contentsline {chapter}{\numberline {4}Layout}{19}{chapter.47}
+\contentsline {section}{\numberline {4.1}Disegno dei singoli stadi}{20}{section.49}
+\contentsline {subsection}{\numberline {4.1.1}Stadio \textit {1}}{20}{subsection.50}
+\contentsline {section}{\numberline {4.2}Full design}{21}{section.54}
+\contentsline {chapter}{\numberline {5}Conclusioni finali}{23}{chapter.55}
