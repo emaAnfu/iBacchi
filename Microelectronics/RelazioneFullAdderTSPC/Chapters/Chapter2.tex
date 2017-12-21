@@ -71,6 +71,7 @@ Il modello del MOS mostrato nella sezione \ref{sec:sec_mos} è ben distante dall
 Utilizzando il software \textit{Microwind} e il simulatore \textit{LTspice} abbiamo ottenuto varie curve caratteristiche per confrontare il risultato più vicino alla realtà con quello aderente al modello teorico presentato in sezione \ref{sec:sec_mos}.
 
 \section{Funzionamento dinamico dei circuiti CMOS}
+\label{sec:funzionamentoDinamicoCMOS}
 
 Per valutare le prestazioni dinamiche della tecnologia CMOS, consideriamo come caso di studio un inverter con carico capacitivo ed effettuiamo un'analisi temporale fornendo in ingresso un'onda quadra.
 
@@ -162,8 +163,8 @@ Analizziamo ora il circuito full adder TSPC presentato da Yuan e Svensson in \ci
 La tecnica TSPC (\textit{True single phase clock}) permette di ottimizzare le performance di circuiti CMOS, soprattutto in termini di frequenza operativa. Tale risultato è raggiunto mediante la temporizzazione del funzionamento dei circuiti CMOS e più precisamente con l'aggiunta di un segnale di clock che, nel caso del circuito in esame, identifica due sole fasi in cui può trovarsi a lavorare quest'ultimo:
 
 \begin{itemize}
-	\item \textit{Fase di precarica}: il segnale di clock $\Phi$ è a livello logico basso, per cui i MOS di tipo P pilotati da $\Phi$ si trovano in conduzione, mentre quelli di tipo N sono in interdizione. Facendo riferimento allo schema di fig.  \ref{fig:fig_schemaDaArticolo} ciò implica che durante questo semiperiodo del segnale di clock il segnale !SUM vada a livello alto, mentre i segnali SUM e CARRY, che tra l'altro sono i segnali di uscita, mantengano il valore cui si trovavano all'inizio del semiperiodo. 
-	\item \textit{Fase di valutazione}: $\Phi$ è a livello alto, i PMOS da esso pilotati non conducono, a differenza degli NMOS. Nel circuito in esame questo implica che il valore logico dei segnali SUM e CARRY dipenda da tutti i restanti segnali, ovvero A, B e C, secondo la funzione logica tipica del sommatore full adder.
+	\item \textit{Fase di precarica}: il segnale di clock $\Phi$ è a livello logico basso, per cui i MOS di tipo \textit{p} pilotati da $\Phi$ si trovano in conduzione, mentre quelli di tipo \textit{n} sono in interdizione. Facendo riferimento allo schema di fig.  \ref{fig:fig_schemaDaArticolo} ciò implica che durante questo semiperiodo del segnale di clock il segnale \textit{!SUM} vada a livello alto, mentre i segnali \textit{SUM} e \textit{CARRY}, che tra l'altro sono i segnali di uscita, mantengano il valore cui si trovavano all'inizio del semiperiodo. 
+	\item \textit{Fase di valutazione}: $\Phi$ è a livello alto, i pMOS da esso pilotati non conducono, a differenza degli nMOS. Nel circuito in esame questo implica che il valore logico dei segnali \textit{SUM} e \textit{CARRY} dipenda da tutti i restanti segnali, ovvero \textit{A},\textit{B}e \textit{C}, secondo la funzione logica tipica del sommatore full adder.
 \end{itemize}
 
 Valutiamo più precisamente cosa accade durante la fase di valutazione. Per farlo consideriamo la fig. \ref{fig:fig_schemaDaArticoloStadiCerchiati} dove sono stati evidenziati i quattro stadi che compongono il circuito.
@@ -174,4 +175,19 @@ Valutiamo più precisamente cosa accade durante la fase di valutazione. Per farl
 	\caption{I quattro stadi che compongono il TSPC full adder.}
 	\label{fig:fig_schemaDaArticoloStadiCerchiati}
 \end{figure}
+
+Per quanto riguarda il segnale \textit{SUM} lo stadio finale è il \textit{3}. La parte \textit{n} di questo stadio CMOS è costituita da due nMOS, uno pilotato dal segnale di temporizzazione $\Phi$ e uno dal segnale \textit{!SUM} generato dallo stadio precedente. \textit{!SUM} pilota anche l'unico transistor pMOS presente nella parte \textit{p}. Sull'uscita di questo stadio si ipotizza essere presente una capacità di carico pari a $100 fF$ come da specifiche. 
+
+Il segnale \textit{!SUM} citato nel paragrafo precedente è a sua volta generato dallo stadio \textit{2.1}. La parte \textit{p} consiste in un solo pMOS pilotato da $\Phi$ che ha il compito di fornire in uscita un 1 logico durante la fase di precarica mentre delega alla parte \textit{n} la generazione di \textit{!SUM} durante la fase di valutazione. Quest'ultimo assumerà lo 0 logico solo se, durante la valutazione, è soddisfatta almeno una delle seguenti condizioni:
+
+\begin{itemize}
+	\item \textit{A}, \textit{B}, \textit{C} sono tutti alti contemporaneamente, cosicché i rispettivi nMOS possano condurre e creare così un percorso per la corrente dal nodo \textit{!SUM} a massa;
+	\item \textit{!CARRY} è alto e almeno uno tra \textit{A}, \textit{B}, o \textit{C} è alto, per lo stesso motivo del punto precedente.
+\end{itemize}
+
+Lo stadio \textit{2.2} genera il segnale d'uscita \textit{CARRY} ed è del tutto analogo allo stadio \textit{3}.
+
+Infine lo stadio \textit{1} si occupa di determinare il valore del segnale \textit{!CARRY}. La sua analisi è simile a quella dello stadio \textit{2.1}, sebbene questa volta non vi sia alcun transistor pilotato dal segnale di temporizzazione. \textit{!CARRY} assume livello logico basso quando si crea un percorso per la corrente tra il nodo di uscita e massa, cioè quando \textit{A} e \textit{B} sono alti o uno dei due è alto assieme a \textit{C}, cosicché i canali dei rispettivi nMOS sono presenti e il percorso si può così creare. Discorso duale vale per la parte \textit{p}: se \textit{A} e \textit{B} sono bassi, o uno dei due è basso assieme a \textit{C}, si forma un percorso di corrente tra l'alimentazione positiva e il nodo di uscita, ovvero \textit{!CARRY} assume livello logico alto.
+
+
 
