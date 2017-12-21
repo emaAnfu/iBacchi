@@ -49,7 +49,7 @@ Quando entrambi i transistor sono in conduzione, la corrente di drain percorre d
 	\left ( \frac{W}{L} \right ) _{eq} = \frac{W}{L_1 + L_2} = \frac{W}{2 \cdot L} =  \frac{\left ( \frac{W}{L} \right ) _{1}}{2} = \frac{\left ( \frac{W}{L} \right ) _{2}}{2} 
 \end{equation}
 Questo vale sia per dispositivi a canale \textit{n} che a canale \textit{p}.
-In generale, si può quindi affermare che, con un numero $n \in  \mathbb{N}$ di MOS tutti uguali in serie, il rapporto d'aspetto del transistor equivalente è:
+In generale, si può affermare che, con un numero $n \in  \mathbb{N}$ di MOS tutti uguali in serie, il rapporto d'aspetto del transistor equivalente è:
 \begin{equation}
 \left ( \frac{W}{L} \right ) _{eq} = \frac{\left ( \frac{W}{L} \right )}{n} 
 \end{equation}
@@ -85,22 +85,16 @@ La prima simulazione \textit{SPICE} (fig. \ref{fig:primaSimulazionePreLayout}) d
 	\label{fig:primaSimulazionePreLayout}
 \end{figure}
 
-Per comprendere le cause di questo fallimento, abbiamo provato ad ingannare il simulatore rimuovendo alcune righe dal modello del MOS, per riportarlo ad un funzionamento più vicino al nostro modello quadratico approssimato. In particolare dal listato di fig. \ref{fig:modelloMOSSpice} (per il pMOS, analogo per l'nMOS) abbiamo rimosso le prime due righe rosse, corrispondenti a parametri inesistenti nel nostro modello approssimato che comportano una notevole degradazione delle prestazioni dei transistor. Ad esempio, a causa del forte campo elettrico nella zona di canale dovuto alle ridotte dimensioni dei MOS (tutti a lunghezza minima), $\mu_n$ e $\mu_p$ non sono più costanti e diminuiscono rispetto ai valori calcolati, come già discusso in sezione \ref{sec:sec_caratteristicaMOS}.
+Per comprendere le cause di questo fallimento, abbiamo provato ad ingannare il simulatore semplificando il modello del MOS, esattamente come in sezione \ref{sec:ilModelloDiMicrowind}. Ne è risultata una simulazione, qui omessa, decisamente più aderente ai risultati attesi che ha testimoniato la bontà del dimensionamento effettuato ma chiaramente non attendibile dal momento che non ricalca il reale funzionamento dei MOS. Ad esempio, a causa del forte campo elettrico nella zona di canale dovuto alle ridotte dimensioni dei MOS (tutti a lunghezza minima), $\mu_n$ e $\mu_p$ non sono più costanti e diminuiscono rispetto ai valori calcolati, come già discusso in sezione \ref{sec:sec_caratteristicaMOS}.
 
-\begin{figure}[hbt!]
-	\centering
-	\includegraphics{figure/Cir_Snapshot_ModelloDelPMOSDiMicrowind.png}
-	\caption{Modello del pMOS fornito da \textit{MicroWind} ed utilizzato da \textit{SPICE}.}
-	\label{fig:modelloMOSSpice}
-\end{figure}
 
-Ne è risultata una simulazione decisamente più aderente ai risultati attesi che ha testimoniato la bontà del dimensionamento effettuato ma chiaramente non attendibile dal momento che non ricalca il reale funzionamento dei MOS. 
 
 \section{Fitting dei parametri: dimensioni definitive}
 \label{sec:sec_fittingParametri}
-Sarebbe alquanto arduo utilizzare per i MOS il modello matematico di livello 3 usato da \textit{SPICE}, al fine di ottenere delle formule di progetto adeguate. Pertanto, dopo un'attenta analisi dei segnali intermedi ottenuti mediante simulazioni, abbiamo agito sulle singole dimensioni dei transistor critici e, per approssimazioni successive, ci siamo avvicinati ad una soluzione soddisfacente.
+Al fine di ottenere delle formule di progetto adeguate, sarebbe alquanto arduo utilizzare per i MOS il modello matematico \textit{SPICE level 3}. Abbiamo inizialmente provato a ricavare $\mu \cdot C'_{ox}$ e $V_{th}$ dalle curve caratteristiche \textit{level 3} di fig. \ref{fig:curveCaratteristicheReali} per utilizzare questi valori nella formula \ref{eq:formulaRapportoAspetto}, ottenendo dei transistor di larghezza assai elevata vista l'applicazione in questione.
+Pertanto abbiamo scelto di cambiare approccio e operare in modo empirico: dopo un'attenta analisi dei segnali intermedi ottenuti mediante simulazioni, abbiamo agito sulle singole dimensioni dei transistor critici e, per approssimazioni successive, ci siamo avvicinati ad una soluzione soddisfacente sia dal punto di vista temporale che geometrico.
 
-\MakeUppercase{è} stato necessario aumentare notevolmente le dimensioni dei singoli transistor, in particolare di quelli finali che pilotano le uscite \textit{SUM} e \textit{CARRY} (stadi \textit{3} e \textit{2.2}). La tabella seguente riporta le nuove dimensioni.
+\MakeUppercase{è} stato necessario aumentare le dimensioni dei singoli transistor, in particolare di quelli finali che pilotano le uscite \textit{SUM} e \textit{CARRY} (stadi \textit{3} e \textit{2.2}). La tabella seguente riporta le nuove dimensioni.
 
 \begin{table}[htb]
 	\centering
@@ -127,7 +121,3 @@ La simulazione SPICE \textit{pre-layout} finale mostra un corretto funzionamento
 \end{figure}
 
 Sarà necessario eseguire un'analoga simulazione \textit{post-layout}, ovvero dopo il disegno su silicio del circuito.
-
-
-
-

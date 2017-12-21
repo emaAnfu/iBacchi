@@ -4,7 +4,10 @@
 \label{Chapter2}
 \lhead{\emph{Analisi}}
 
-\section{Il modello semplificato del MOS}
+\section{Le caratteristiche del MOS}
+\label{sec:caratteristicheMos}
+
+\subsection{Il modello semplificato del MOS}
 \label{sec:sec_mos}
 
 Dato che il circuito trattato in questo progetto è basato su tecnologia CMOS è doveroso iniziare con l'analisi del \textit{mattoncino base} che lo compone, ossia il transistor di tipo MOSFET.
@@ -60,7 +63,7 @@ mentre per entrambi l'ossido ha spessore $t_{ox} = 2.0 \cdot 10^{-9} \ m$ e perm
 C'_{ox} = \frac{\epsilon_0 \cdot \epsilon_r}{t_{ox}} = \dfrac{8.85 \cdot 10^{-12} \ [F/m] \cdot 3.9}{2.0 \cdot 10^{-9} \ [m]}\simeq 17.26 \cdot 10^{-3} \ \dfrac{F}{m^2}
 \end{equation}
 
-\section{La caratteristica reale del MOS}
+\subsection{La caratteristica reale del MOS}
 \label{sec:sec_caratteristicaMOS}
 Il modello del MOS mostrato nella sezione \ref{sec:sec_mos} è ben distante dalla realtà, perché si manifestano:
 \begin{itemize}
@@ -68,7 +71,39 @@ Il modello del MOS mostrato nella sezione \ref{sec:sec_mos} è ben distante dall
 	\item \textit{effetto body}, per il quale la $V_{th}$ diminuisce all'aumentare della tensione $V_{SB}$; nei dispositivi integrati spesso il source del MOS non è collegato al bulk (ovvero il substrato) e quindi $V_{SB} \neq 0 \Rightarrow \left | V_{th} \right | < \left | V_{th_0} \right | $ (con $V_{th_0}$ tensione di soglia per $V_{SB}=0$).
 \end{itemize}
 
-Utilizzando il software \textit{Microwind} e il simulatore \textit{LTspice} abbiamo ottenuto varie curve caratteristiche per confrontare il risultato più vicino alla realtà con quello aderente al modello teorico presentato in sezione \ref{sec:sec_mos}.
+\subsection{Il modello \textit{level 3} di \textit{MicroWind}}
+\label{sec:ilModelloDiMicrowind}
+Il software \textit{MicroWind} fornisce un modello \textit{SPICE} del MOS di \textit{livello 3}, ben distante dalla caratteristica semplificata illustrata in sezione \ref{sec:sec_mos}. Di seguito, proponiamo un confronto tra i due modelli, facendo affidamento a curve caratteristiche ottenute mediante simulazione con \textit{LTspice}.
+
+I grafici seguenti fanno riferimento ad un pMOS a dimensioni minime ($W = L = 0.12 \mu m$) generato da \textit{MicroWind}.
+
+\begin{figure}[hbt!]
+	\centering
+	\includegraphics[width=1\textwidth]{figure/Sim_DCSweep_PMOS1_ConModelloAccurato(Chiaro).PNG}
+	\caption{Curve caratteristiche di un pMOS - modello \textit{level 3} di \textit{MicroWind}.}
+	\label{fig:curveCaratteristicheReali}
+\end{figure}
+Inizialmente abbiamo simulato il pMOS con il modello \textit{level 3} esattamente come generato da \textit{MicroWind}. Le curve nel piano $I_{DS}$ - $V_{DS}$ sono ottenute per incrementi costanti di $V_{GS}$ tra $0V$ e $V_{DD} = 1.2V$. Le correnti sono decisamente più basse rispetto a quanto atteso applicando le formule semplificate presentate in sezione \ref{sec:sec_mos}. Ad esempio, per $V_{GS} = 1.2V$, in saturazione si ha $I_D \approx 1.15mA$.
+
+Per riportare il transistor ad un funzionamento più vicino al nostro modello quadratico approssimato, abbiamo provato ad ingannare il simulatore semplificando il modello \textit{SPICE}. In particolare dal listato di fig. \ref{fig:modelloMOSSpice} (per il pMOS, analogo per l'nMOS) abbiamo rimosso le prime due righe rosse, corrispondenti a parametri inesistenti nel nostro modello approssimato che comportano una notevole degradazione delle prestazioni dei transistor.
+
+\begin{figure}[hbt!]
+	\centering
+	\includegraphics{figure/Cir_Snapshot_ModelloDelPMOSDiMicrowind.png}
+	\caption{Modello \textit{SPICE} del pMOS fornito da \textit{MicroWind}.}
+	\label{fig:modelloMOSSpice}
+\end{figure}
+
+Nelle nuove curve caratteristiche, per $V_{GS} = 1.2V$, in saturazione si ha $I_D \approx 2.9mA$.
+Il risultato è aderente con quanto atteso applicando le formule semplificate, tuttavia non ha alcuna rilevanza pratica.
+
+\begin{figure}[hbt!]
+	\centering
+	\includegraphics[width=1\textwidth]{figure/Sim_DCSweep_PMOS1_ModelloSemplificato(Chiaro).PNG}
+	\caption{Curve caratteristiche di un pMOS - modello semplificato.}
+	\label{fig:curveCaratteristicheSemplificate}
+\end{figure}
+
 
 \section{Funzionamento dinamico dei circuiti CMOS}
 \label{sec:funzionamentoDinamicoCMOS}
