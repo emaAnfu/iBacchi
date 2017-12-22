@@ -31,37 +31,73 @@ Analizziamo quindi i disegni delle singole parti di circuito riportando alcuni s
 	\item i quadrati con la croce all'interno indicano la presenza di un contatto tra livelli differenti.
 \end{itemize}
 
-\subsection{Stadio \textit{1}}
+\subsection{Stadio \textit{1} - Generazione di !CARRY}
 
-In fig. \ref{fig:NMOSnotCarry} si può osservare la realizzazione della parte \textit{n} dello stadio \textit{1} dedicato alla generazione del segnale \textit{!CARRY}, mentre la fig. \ref{fig:PMOSnotCarry} è relativa alla parte \textit{p}. 
+In fig. \ref{fig:NMOSePMOSnotCarry} si può osservare la realizzazione della parte \textit{n} (a sinistra) e della parte \textit{p} (a destra) dello stadio \textit{1} dedicato alla generazione del segnale \textit{!CARRY}, indicato nel layout con la label \textit{notCarry}. I MOS più larghi sono disegnati "ripiegati" su se stessi in modo da mantenere le dimensioni di canale desiderate pur potendo riorganizzare la disposizione delle diffusioni per meglio adattarsi alla forma generale che si vuole far assumere al circuito. 
 
 Per ciascuno dei due circuiti viene estratta la netlist che, tramite \textit{LTspice}, permette di validare il disegno tenendo conto di tutti i parametri presenti nel modello della tecnologia utilizzata.
 
 \begin{figure}[hbt!]
 	\centering
-	\includegraphics[width=0.5\textwidth]{figure/Msk_NMOS_notCarry_V2.png}
-	\caption{Parte \textit{n} dello stadio 1.}
-	\label{fig:NMOSnotCarry}
+	\includegraphics[width=0.4\textwidth]{figure/Msk_NMOS_notCarry_V2.png}\hfil
+	\includegraphics[width=0.4\textwidth]{figure/Msk_PMOS_notCarry_V2.png}
+	\caption{Parte \textit{n} (a sinistra) e parte \textit{p} (a destra) dello stadio 1.}
+	\label{fig:NMOSePMOSnotCarry}
 \end{figure} 
 
-\begin{figure}[hbt!]
-	\centering
-	\includegraphics[width=0.7\textwidth]{figure/Msk_PMOS_notCarry_V2.png}
-	\caption{Parte \textit{p} dello stadio 1.}
-	\label{fig:PMOSnotCarry}
-\end{figure} 
-
-Le due parti collegate costituiscono il disegno complessivo dello stadio \textit{1}, raffigurato in fig. \ref{fig:notCarry}, del quale si effettua la validazione procedendo nel modo già descritto. Da tale figura si può notare la scelta di adottare un approccio \textit{standard cell} per la disposizione delle piste di alimentazione e di segnale, come d'altronde viene suggerito nelle specifiche di progetto. In alto e in basso sono quindi presenti due piste orizzontali di \textit{Metal 1} collegate rispettivamente all'alimentazione positiva e negativa. I segnali \textit{A}, \textit{B}, \textit{C} e \textit{notCarry} sono forniti e prelevati in verticale, tramite piste di polisilicio per i primi tre e una pista di \textit{Metal 2} per l'ultimo. Tutti e quattro, assieme a \textit{phi}, sono poi portati nel resto del circuito da alcune piste di \textit{metal 1}, orizzontali, poste tra le parti \textit{n} e le parti \textit{p} di ogni stadio.
+Le due parti collegate costituiscono il disegno complessivo dello stadio \textit{1}, raffigurato in fig. \ref{fig:notCarry}. Da tale figura si può notare la scelta di adottare un approccio \textit{standard cell} per la disposizione delle piste di alimentazione e di segnale, come d'altronde viene suggerito nelle specifiche di progetto. In alto e in basso sono quindi presenti due piste orizzontali di \textit{Metal 1} collegate rispettivamente all'alimentazione positiva e negativa. I segnali \textit{A}, \textit{B}, \textit{C} e \textit{notCarry} sono forniti e prelevati in verticale, tramite piste di polisilicio per i primi tre e una pista di \textit{Metal 2} per l'ultimo. Tutti e quattro, assieme a \textit{phi}, sono poi trasportati nel resto del circuito da alcune piste di \textit{Metal 1}, orizzontali, poste tra le parti \textit{n} e le parti \textit{p} di ogni stadio.
 
 \begin{figure}[hbt!]
 	\centering
 	\includegraphics[width=0.5\textwidth]{figure/Msk_NotCarry_V2.png}
-	\caption{Disegno dello stadio \textit{1} dedicato alla generazione di \textit{!CARRY}.}
+	\caption{Disegno dello stadio \textit{1} dedicato alla generazione di \textit{notCarry}.}
 	\label{fig:notCarry}
 \end{figure} 
 
+Anche di questo circuito si effettua una simulazione \textit{post-layout} prima di procedere allo stadio successivo.
+
+\subsection{Stadio \textit{2.1} - Generazione di !SUM}
+
+In figura \ref{fig:NMOSnotSum} è riportato il disegno della parte \textit{n} dello stadio \textit{2.1} dedicato alla generazione del segnale \textit{!SUM}, etichettato come \textit{notSum}. Una particolarità di questa parte riguarda la realizzazione dei MOS in serie, ottenuta tramite l'affiancamento di diverse piste di polisilicio pilotati dai segnali d'ingresso; questa tecnica permette di risparmiare spazio evitando di inserire metalizzazioni per i gate dei MOS intermedi tra il nodo di uscita \textit{notSum} e il nodo comune ai due rami che compongono questa parte di circuito: non è infatti necessario prelevare tali segnali.
+
+\begin{figure}[hbt!]
+	\centering
+	\includegraphics[width=0.5\textwidth]{figure/Msk_NMOS_NotSum.png}
+	\caption{Parte \textit{n} dello stadio \textit{2.1} dedicato alla generazione di \textit{notSum}.}
+	\label{fig:NMOSnotSum}
+\end{figure} 
+
+La parte \textit{p} di questo stadio è costituita da un semplice pMOS per cui se ne omette la rappresentazione, così come di quella relativa allo stadio completo. Considerazioni circa la tipologia di progetto \textit{standard cell} e la procedura di validazione sono analoghe a quelle esposte circa lo stadio \textit{1}.
+
+\subsection{Stadi finali \textit{2.2} e \textit{3} - Generazione di CARRY e SUM}
+
+Per quanto riguarda gli stadi finali \textit{2.2} e \textit{3} questi hanno la stessa identica struttura per cui per brevità si riporta in fig. \ref{fig:sum} il disegno del solo stadio \textit{3}, dedicato alla generazione del segnale d'uscita \textit{SUM}.
+
+\begin{figure}[hbt!]
+	\centering
+	\includegraphics[width=0.5\textwidth]{figure/Msk_SumInveter.png}
+	\caption{Disegno dello stadio \textit{3} dedicato alla generazione di \textit{SUM}.}
+	\label{fig:sum}
+\end{figure} 
+
+Le tecniche utilizzate per il layout di questo stadio sono le stesse gia presentate nei paragrafi precedenti. Terminata la sua validazione, si può procedere a comporre il circuito finale.
+
 \section{Full design}
 \label{sec:sec_fullDesign}
+
+Il circuito finale, rappresentato in fig. \ref{fig:layout}, è il risultato della composizione dei singoli stadi presentati finora. Essi sono affiancati in modo da ottenere una struttura tanto più compatta possibile pur mantenendo la topologia delle varie parti. Ciò significa avvicinare le varie piste e/o diffusioni in modo da minimizzare gli spazi vuoti pur rispettando le regole di progettazione ovvero le distanze minime necessarie. 
+
+Il risultato è un circuito molto ordinato, di forma rettangolare e di dimensioni (LARGHEZZA)x(ALTEZZA), con i segnali di ingresso/uscita prelevati e forniti in verticale e quelli di alimentazione applicati in orizzontale.
+
+L'ultimo passo consiste nel compiere un'ultima validazione del circuito finale. Se ne esporta quindi la netlist che viene simulata tramite \textit{LTspice}. Il risultato della simulazione si osserva in fig. \ref{fig:simulazioneFinale}. Come si può notare a fronte di ogni combinazione degli ingressi \textit{A}, \textit{B}, \textit{C}, i segnali \textit{SUM} e \textit{CARRY} assumono il livello di tensione corretto entro le tempistiche richieste.  
+
+\begin{figure}[hbt!]
+	\centering
+	\caption{Simulazione post-layout dello stadio finale.}
+	\label{fig:simulazioneFinale}
+\end{figure}
+
+Da questa simulazione è anche possibile calcolare la potenza dissipata dal circuito in esame, che risulta pari a (POTENZA) mW.
 
 
 
