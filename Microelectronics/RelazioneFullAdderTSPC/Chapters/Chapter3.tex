@@ -11,13 +11,13 @@
 	\caption{Schema completo del full-adder.}
 	\label{fig:schemaCircuitale}
 	\end{figure}
-In fig. \ref{fig:schemaCircuitale} è mostrato lo schema completo del full-adder, così come simulato in SPICE. Tutti i \textit{bulk} degli nMOS e dei pMOS sono stati collegati rispettivamente a massa e all'alimentazione positiva, in modo tale da assicurare la polarizzazione inversa delle giunzioni \textit{bulk - drain} e \textit{bulk - source} in ogni condizione operativa. Questa scelta è inoltre obbligata dalla realizzazione su silicio nella quale tutti i bulk degli nMOS (pMOS) corrispondono al medesimo substrato di tipo \textit{p} ("vasca" \textit{n-well}).
+In fig. \ref{fig:schemaCircuitale} è mostrato lo schema completo del full-adder, così come simulato in \textit{SPICE}. Tutti i \textit{bulk} degli nMOS e dei pMOS sono stati collegati rispettivamente a massa e all'alimentazione positiva, in modo tale da assicurare la polarizzazione inversa delle giunzioni \textit{bulk - drain} e \textit{bulk - source} in ogni condizione operativa. Questa scelta è inoltre obbligata dalla realizzazione su silicio nella quale tutti i bulk degli nMOS (pMOS) corrispondono al medesimo substrato di tipo \textit{p} ("vasca" \textit{n-well}).
 
 \section{Dimensionamento di massima}
 \label{sec:sec_dimensionamentoMassima}
 Il dimensionamento dei transistor prevede di iniziare dagli \textbf{stadi finali} \textit{2.2} e \textit{3} (in riferimento alla fig. \ref{fig:fig_schemaDaArticoloStadiCerchiati}), relativi rispettivamente ai MOS \textit{M1, M2, M3} e\textit{ M23, M24, M25} dello schema in fig. \ref{fig:schemaCircuitale}; entrambi hanno una capacità di carico $C_{load} = 100fF$, fornita dalle specifiche indicate in sezione \ref{sec:sec_fasiLavoro}.
 
-Le capacità di gate di \textit{M1} e \textit{M3} costituiranno il carico dello stadio precedente \textit{(2.1)}; dipendendo queste dalle dimensioni dei MOS, si giustifica la necessità di iniziare dai finali e tornare indietro.
+Le capacità di gate di \textit{M1} e \textit{M3} costituiranno il carico dello stadio \textit{2.1} precedente; dipendendo queste dalle dimensioni dei MOS, si giustifica la necessità di iniziare dai finali e tornare indietro.
 Si osservi che analogamente il carico dello stadio \textit{1} è dato dal parallelo delle capacità di gate di \textit{M23}, \textit{M25} (stadio \textit{2.2}) e \textit{M11} (stadio \textit{2.1}).
 
 \subsection{Vincoli temporali e \textit{inverter equivalente}}
@@ -29,7 +29,7 @@ Dalla frequenza operativa richiesta di $f_{clock} = 2GHz$ (ovvero periodo $T_{cl
 
 A titolo precauzionale si fissa $\tau = 200ps$, tenendo conto anche dei $25ps$ dati come tempi di salita/discesa delle tensioni \textit{A, B, C, clock} in ingresso.
 
-A questo punto si può applicare la formula \ref{eq:formulaRapportoAspetto}, impiegando $\mu_p = totdavedere$ e $C'_{ox} = davedere$, ottenendo così i \textbf{rapporti d'aspetto dei MOS di un \textit{inverter equivalente}} che deve pilotare la data capacità di carico completando la carica entro il tempo definito. Si ricorda nuovamente che il risultato fornito da questa formula è decisamente più piccolo del necessario, a causa di approssimazioni ottimistiche sia sul tempo di carica/scarica (assunta lineare per facilità) sia sulla caratteristica del MOS, come già discusso.
+A questo punto si può applicare la formula \ref{eq:formulaRapportoAspetto}, impiegando i valori di $\mu _n$, $\mu _p$ e $C'_{ox}$ trovati in sezione \ref{sec:sec_mos}, ottenendo così i \textbf{rapporti d'aspetto dei MOS di un \textit{inverter equivalente}} che deve pilotare la data capacità di carico completando la carica entro il tempo definito. Si ricorda nuovamente che il risultato fornito da questa formula è decisamente più piccolo del necessario, a causa di approssimazioni ottimistiche sia sul tempo di carica/scarica (assunta lineare per facilità) sia sulla caratteristica del MOS, come già discusso.
 
 \subsection{Dall'\textit{inverter equivalente} alle dimensioni dei MOS}
 \label{subsec:daInverterAMOS}
@@ -133,7 +133,7 @@ Pertanto abbiamo scelto di cambiare approccio e operare in modo empirico: dopo u
 \end{table}
 
 \subsection{Simulazione \textit{pre-layout} soddisfacente}
-La simulazione SPICE \textit{pre-layout} finale mostra un corretto funzionamento del circuito. \MakeUppercase{è} agevole verificare che a fronte degli ingressi \textit{A}, \textit{B}, \textit{C}, le uscite \textit{SUM} e \textit{CARRY} forniscono i corretti valori logici e tensioni accettabili.
+La simulazione \textit{SPICE} \textit{pre-layout} finale mostra un corretto funzionamento del circuito. \MakeUppercase{è} agevole verificare che a fronte degli ingressi \textit{A}, \textit{B}, \textit{C}, le uscite \textit{SUM} e \textit{CARRY} forniscono i corretti valori logici e tensioni accettabili.
 
 \begin{figure}[hbt!]
 	\centering

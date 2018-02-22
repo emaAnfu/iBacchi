@@ -7,7 +7,7 @@
 %\section{Scopo del progetto}
 %\label{sec:sec_scopoProgetto}
 
-Questa relazione illustra il progetto del layout di un circuito sommatore CMOS integrato che sfrutti la tecnica TSPC (\textit{True Single Phase Clock}) presentata da \textit{Yuan} e \textit{Svensson} nell'articolo (CITA ARTICOLO). Il lavoro si inserisce nell'ambito del corso di Microelettronica tenuto dal Prof. Daniele Caviglia nella Laurea Magistrale in Ingegneria Elettronica dell'Università degli Studi di Genova.
+Questa relazione illustra il progetto del layout di un circuito sommatore CMOS integrato che sfrutti la tecnica TSPC (\textit{True Single Phase Clock}) presentata da \textit{Yuan} e \textit{Svensson} nell'articolo \cite{yuan1989high}. Il lavoro si inserisce nell'ambito del corso di Microelettronica tenuto dal Prof. Daniele Caviglia nella Laurea Magistrale in Ingegneria Elettronica dell'Università degli Studi di Genova.
 
 L'elaborato vuole descrivere nel dettaglio il lavoro svolto, i risultati raggiunti e le problematiche riscontrate durante lo stesso. Inizieremo dunque con l'illustrare i vari passi percorsi, per poi scendere nel dettaglio delle fasi di analisi (sia della tecnologia utilizzata che del circuito sommatore) e di progettazione vera e propria.
 
@@ -48,11 +48,11 @@ La terza fase prevede l'analisi dello schema circuitale del Full Adder presente 
 
 Il dimensionamento dei MOS è per l'appunto la quarta fase del processo e ne rappresenta uno dei momenti più critici, in quanto getta le basi per il funzionamento del circuito finale. Esso tuttavia è basato sull'utilizzo di modelli analitici approssimati, per cui le dimensioni dei MOS trovati a questo passo non sono quelle definitive. Nel cap. \ref{Chapter3}, dedicato alla progettazione circuitale, parleremo in dettaglio di questo aspetto.
 
-Ottenuta una prima approssimazione delle dimensioni dei transistor si procede con la quinta fase, la quale prevede il disegno del circuito su un software che ne permetta la simulazione. In particolare noi abbiamo disegnato il circuito su PSpice Schematics, ne abbiamo esportato la netlist, e abbiamo simulato quest'ultima con LTspice IV, per i problemi di cui abbiamo già parlato, impiegando per le simulazioni il modello del MOS fornito da Microwind e dipendente dalla tecnologia di processo scelta. Anche questo passaggio sarà esaurientemente descritto nel cap. \ref{Chapter3}.
+Ottenuta una prima approssimazione delle dimensioni dei transistor si procede con la quinta fase, la quale prevede il disegno del circuito su un software che ne permetta la simulazione. In particolare noi abbiamo disegnato il circuito su \textit{PSpice Schematics}, ne abbiamo esportato la netlist, e abbiamo simulato quest'ultima con \textit{LTspice IV}, per i problemi di cui abbiamo già parlato, impiegando per le simulazioni il modello del MOS fornito da \textit{Microwind} e dipendente dalla tecnologia di processo scelta. Anche questo passaggio sarà esaurientemente descritto nel cap. \ref{Chapter3}.
 
 Il passo successivo è uno dei più interessanti. La fase precedente ha infatti permesso di ottenere una simulazione del circuito dimensionato per via analitica, ma come abbiamo già detto non ci si deve stupire se il risultato non è soddisfacente. Occorre un'attenta analisi dei segnali presenti in ogni ramo del circuito così da individuare eventuali punti critici e perfezionare di conseguenza le dimensioni dei MOS. Inizia così una fase di \textit{fitting dei parametri}, composta da un ciclo di analisi e ritocco delle dimensioni, che termina soltanto quando ci si ritiene soddisfatti della simulazione circuitale. 
 
-Identificate le dimensioni finali dei transistor si procede al progetto e disegno del layout di circuito su Microwind, secondo l'approccio \textit{standard cell}. Questa fase sarà descritta nel Cap. \ref{Chapter4} e, una volta terminata, è seguita da una simulazione finale post-layout che, se in accordo con la simulazione pre-layout, consente di validare il disegno finale. 
+Identificate le dimensioni finali dei transistor si procede al progetto e disegno del layout di circuito su \textit{Microwind}, secondo l'approccio \textit{standard cell}. Questa fase sarà descritta nel Cap. \ref{Chapter4} e, una volta terminata, è seguita da una simulazione finale \textit{post-layout} che, se in accordo con le specifiche, consente di validare il disegno finale. 
 
 
 

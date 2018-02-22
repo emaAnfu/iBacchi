@@ -199,7 +199,7 @@ La tecnica TSPC (\textit{True single phase clock}) permette di ottimizzare le pe
 
 \begin{itemize}
 	\item \textit{Fase di precarica}: il segnale di clock $\Phi$ è a livello logico basso, per cui i MOS di tipo \textit{p} pilotati da $\Phi$ si trovano in conduzione, mentre quelli di tipo \textit{n} sono in interdizione. Facendo riferimento allo schema di fig.  \ref{fig:fig_schemaDaArticolo} ciò implica che durante questo semiperiodo del segnale di clock il segnale \textit{!SUM} vada a livello alto, mentre i segnali \textit{SUM} e \textit{CARRY}, che tra l'altro sono i segnali di uscita, mantengano il valore cui si trovavano all'inizio del semiperiodo. 
-	\item \textit{Fase di valutazione}: $\Phi$ è a livello alto, i pMOS da esso pilotati non conducono, a differenza degli nMOS. Nel circuito in esame questo implica che il valore logico dei segnali \textit{SUM} e \textit{CARRY} dipenda da tutti i restanti segnali, ovvero \textit{A},\textit{B}e \textit{C}, secondo la funzione logica tipica del sommatore full adder.
+	\item \textit{Fase di valutazione}: $\Phi$ è a livello alto, i pMOS da esso pilotati non conducono, a differenza degli nMOS. Nel circuito in esame questo implica che il valore logico dei segnali \textit{SUM} e \textit{CARRY} dipenda da tutti i restanti segnali, ovvero \textit{A}, \textit{B} e \textit{C}, secondo la funzione logica tipica del sommatore full adder.
 \end{itemize}
 
 Valutiamo più precisamente cosa accade durante la fase di valutazione. Per farlo consideriamo la fig. \ref{fig:fig_schemaDaArticoloStadiCerchiati} dove sono stati evidenziati i quattro stadi che compongono il circuito.
