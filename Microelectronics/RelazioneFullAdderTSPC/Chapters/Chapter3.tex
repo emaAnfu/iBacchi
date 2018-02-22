@@ -63,12 +63,23 @@ Di seguito si riportano le dimensioni di massima dei MOS ottenute applicando le 
 
 \begin{table}[htb]
 	\centering
-	\begin{tabular}{c*{3}{c}}
+	\begin{tabular}{c*{5}{c}}
 		\toprule
-		MOS & Rapporto d'aspetto & W($\mu$m) & L($\mu$m)\\
+		MOS & Canale & $W/L$ & W($\mu$m) & L($\mu$m) & Stadio\\
 		\midrule
-		M1 & 30 & 3.24 & 0.12\\
-		M2 & 12 & 2.24 & 0.12\\
+		M1 & p & 10 & 1.20 & 0.12 & Finale \textit{SUM} \\
+		M2, M3 & n & 6 & 0.72 & 0.12 & " \\
+		M4 & p & 2 & 0.24 & 0.12 & Generazione \textit{!SUM} \\
+		M5, M6, M7 & n & 2 & 0.24 & 0.12 & " \\
+		M8, M9, M10 & n & 2 & 0.24 & 0.12 & " \\
+		M11 & n & 2 & 0.24 & 0.12 & " \\
+		M12 & n & 2 & 0.24 & 0.12 & " \\
+		M13, M14 & p & 6 & 0.72 & 0.12 & Generazione \textit{!CARRY} \\
+		M15, M16 & n & 2 & 0.24 & 0.12 & " \\
+		M17, M18, M19 & p & 6 & 0.72 & 0.12 & " \\
+		M20, M21, M22 & n & 2 & 0.24 & 0.12 & " \\
+		M23 & p & 8 & 0.96 & 0.12 & Finale \textit{CARRY} \\
+		M24, M25 & n & 5 & 0.60 & 0.12 & " \\
 		\bottomrule
 	\end{tabular}
 	\caption{Tabella delle dimensioni calcolate dei MOS, non valide.}
@@ -80,7 +91,7 @@ La prima simulazione \textit{SPICE} (fig. \ref{fig:primaSimulazionePreLayout}) d
 
 \begin{figure}[hbt!]
 	\centering
-	\includegraphics[width=1\textwidth]{figure/sim_FA_Bad.png}
+	\includegraphics[width=1.3\textwidth, angle=90]{figure/sim_FA_Bad.png}
 	\caption{Prima simulazione \textit{pre-layout} con dimensioni calcolate dei MOS.}
 	\label{fig:primaSimulazionePreLayout}
 \end{figure}
@@ -98,12 +109,23 @@ Pertanto abbiamo scelto di cambiare approccio e operare in modo empirico: dopo u
 
 \begin{table}[htb]
 	\centering
-	\begin{tabular}{c*{3}{c}}
+	\begin{tabular}{c*{5}{c}}
 		\toprule
-		MOS & Rapporto d'aspetto & W($\mu$m) & L($\mu$m)\\
+		MOS & Canale & $W/L$ & W($\mu$m) & L($\mu$m) & Stadio\\
 		\midrule
-		M1 & 30 & 3.24 & 0.12\\
-		M2 & 12 & 2.24 & 0.12\\
+		M1 & p & 30 & 3.60 & 0.12 & Finale \textit{SUM} \\
+		M2, M3 & n & 16 & 1.92 & 0.12 & " \\
+		M4 & p & 10 & 1.20 & 0.12 & Generazione \textit{!SUM} \\
+		M5, M6, M7 & n & 16 & 1.92 & 0.12 & " \\
+		M8, M9, M10 & n & 10 & 1.20 & 0.12 & " \\
+		M11 & n & 10 & 1.20 & 0.12 & " \\
+		M12 & n & 16 & 1.92 & 0.12 & " \\
+		M13, M14 & p & 24 & 2.88 & 0.12 & Generazione \textit{!CARRY} \\
+		M15, M16 & n & 8 & 0.96 & 0.12 & " \\
+		M17, M18, M19 & p & 24 & 2.88 & 0.12 & " \\
+		M20, M21, M22 & n & 8 & 0.96 & 0.12 & " \\
+		M23 & p & 30 & 3.60 & 0.12 & Finale \textit{CARRY} \\
+		M24, M25 & n & 20 & 2.40 & 0.12 & " \\
 		\bottomrule
 	\end{tabular}
 	\caption{Tabella delle dimensioni dei MOS dopo il \textit{fitting}.}
@@ -115,7 +137,7 @@ La simulazione SPICE \textit{pre-layout} finale mostra un corretto funzionamento
 
 \begin{figure}[hbt!]
 	\centering
-	\includegraphics[width=1\textwidth]{figure/sim_FA_Good.png}
+	\includegraphics[width=1.5\textwidth, angle=90]{figure/sim_FA_Good.png}
 	\caption{Simulazione \textit{pre-layout} soddisfacente.}
 	\label{fig:simulazionePreLayoutSoddisfacente}
 \end{figure}

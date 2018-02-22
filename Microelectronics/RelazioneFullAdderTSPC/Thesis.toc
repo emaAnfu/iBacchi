@@ -16,12 +16,12 @@
 \contentsline {subsection}{\numberline {3.2.2}Dall'\textit {inverter equivalente} alle dimensioni dei MOS}{16}{subsection.39}
 \contentsline {subsection}{\numberline {3.2.3}Dimensioni geometriche dei MOS: risultati di \textit {MATLAB}}{17}{subsection.43}
 \contentsline {subsection}{\numberline {3.2.4}Prima simulazione \textit {pre-layout}}{17}{subsection.45}
-\contentsline {section}{\numberline {3.3}Fitting dei parametri: dimensioni definitive}{18}{section.47}
-\contentsline {subsection}{\numberline {3.3.1}Simulazione \textit {pre-layout} soddisfacente}{18}{subsection.49}
-\contentsline {chapter}{\numberline {4}Layout}{20}{chapter.51}
-\contentsline {section}{\numberline {4.1}Disegno dei singoli stadi}{21}{section.53}
-\contentsline {subsection}{\numberline {4.1.1}Stadio \textit {1} - Generazione di !CARRY}{21}{subsection.54}
-\contentsline {subsection}{\numberline {4.1.2}Stadio \textit {2.1} - Generazione di !SUM}{22}{subsection.57}
-\contentsline {subsection}{\numberline {4.1.3}Stadi finali \textit {2.2} e \textit {3} - Generazione di CARRY e SUM}{23}{subsection.59}
-\contentsline {section}{\numberline {4.2}Full design}{23}{section.61}
-\contentsline {chapter}{\numberline {5}Conclusioni finali}{25}{chapter.63}
+\contentsline {section}{\numberline {3.3}Fitting dei parametri: dimensioni definitive}{19}{section.47}
+\contentsline {subsection}{\numberline {3.3.1}Simulazione \textit {pre-layout} soddisfacente}{20}{subsection.49}
+\contentsline {chapter}{\numberline {4}Layout}{22}{chapter.51}
+\contentsline {section}{\numberline {4.1}Disegno dei singoli stadi}{23}{section.53}
+\contentsline {subsection}{\numberline {4.1.1}Stadio \textit {1} - Generazione di !CARRY}{23}{subsection.54}
+\contentsline {subsection}{\numberline {4.1.2}Stadio \textit {2.1} - Generazione di !SUM}{24}{subsection.57}
+\contentsline {subsection}{\numberline {4.1.3}Stadi finali \textit {2.2} e \textit {3} - Generazione di CARRY e SUM}{25}{subsection.59}
+\contentsline {section}{\numberline {4.2}Full design}{25}{section.61}
+\contentsline {chapter}{\numberline {5}Conclusioni finali}{28}{chapter.63}
